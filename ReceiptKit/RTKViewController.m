@@ -7,6 +7,7 @@
 //
 
 #import "RTKViewController.h"
+#import "RTKReceiptParser.h"
 
 @interface RTKViewController ()
 
@@ -18,6 +19,27 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    NSURL *receiptURL = [[NSBundle mainBundle] URLForResource:@"receipt" withExtension:@""];
+    NSData *receipt = [NSData dataWithContentsOfURL:receiptURL];
+    
+    NSAssert(receipt, @"Missing Receipt Data");
+    
+    NSURL *certURL = [[NSBundle mainBundle] URLForResource:@"apple-cert" withExtension:@""];
+    NSData *cert = [NSData dataWithContentsOfURL:certURL];
+
+    NSAssert(cert, @"Missing Cert. Data");
+    
+    BOOL isReceiptValid = [RTKReceiptParser isReceiptValid:receipt certificate:cert];
+    
+    if(isReceiptValid)
+    {
+        NSLog(@"Receipt Data is valid.");
+    }
+    else
+    {
+        NSLog(@"ERROR");
+    }
 }
 
 - (void)didReceiveMemoryWarning
