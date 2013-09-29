@@ -14,7 +14,7 @@ typedef NS_ENUM(NSInteger, RTKReceiptID)
     RTKBundleID = 2,
     RTKVersion = 3,
     RTKOpaqueValue = 4,
-    RTKHash = 5,
+    RTKHash = 5, //https://developer.apple.com/library/mac/releasenotes/General/ValidateAppStoreReceipt/#//apple_ref/doc/uid/TP40010573-CH1-SW14
     RTKInAppPurchase = 17,
     RTKOriginalVersion = 19,
     //RTKExpiryDate = 21,

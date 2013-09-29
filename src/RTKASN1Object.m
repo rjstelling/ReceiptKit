@@ -11,7 +11,7 @@
 
 #import "RTKASN1Set.h"
 #import "RTKASN1Sequence.h"
-#import "RTKOctetString.h"
+#import "RTKASN1OctetString.h"
 
 @implementation RTKASN1Object
 
@@ -47,48 +47,30 @@
         
         NSData *asn1ObjectData = [NSData dataWithBytesNoCopy:(void *)locationInData length:length freeWhenDone:NO];
         
-        switch(type)
+        if(result == V_ASN1_CONSTRUCTED)
         {
-            case V_ASN1_SET:
-            {
-                RTKASN1Set *set = [[RTKASN1Set alloc] initWithData:asn1ObjectData];
-                [decodedObjects addObject:set];
-            }
-                break;
-                
-            case V_ASN1_SEQUENCE:
-            {
-                RTKASN1Sequence *sequence = [[RTKASN1Sequence alloc] initWithData:asn1ObjectData];
-                [decodedObjects addObject:sequence];
-            }
-                break;
-                
-            case V_ASN1_INTEGER:
-                //This will only correctly decode integers of one byte
-            {
-                int integer = 0;
-                [asn1ObjectData getBytes:&integer length:length];
-                [decodedObjects addObject:@(integer)];
-            }
-                break;
-                
-            case V_ASN1_OCTET_STRING: /* TODO: */
-            {
-                RTKOctetString *octetString = [[RTKOctetString alloc] initWithData:asn1ObjectData];
-                //NSData *data = [NSData dataWithBytes:asn1ObjectData.bytes length:length];
-                [decodedObjects addObject:octetString];
-            }
-                break;
+            //NSLog(@"Created an ASN.1 structure");
+            [decodedObjects addObject:[self decodeConstructObject:type data:asn1ObjectData]];
+        }
+        else if(result == V_ASN1_UNIVERSAL)
+        {
+            //NSLog(@"Data is a specific type (int, bool et. al.)");
+            [decodedObjects addObject:[self decodeUniversalObject:type data:asn1ObjectData]];
+        }
+        else if(result == V_ASN1_CONTEXT_SPECIFIC)
+        {
+            //NSLog(@"Context specific (just copy everything)");
+            [decodedObjects addObject:[data copy]];
             
-//            case V_ASN1_UTF8STRING:
-//            {
-//                //NSString *string = [[NSString alloc] initWithData:asn1ObjectData
-//                //                                         encoding:NSUTF8StringEncoding];
-//                //[decodedObjects addObject:string];
-//            }
-                
-            default: //We just ignore any other types
-                break;
+            break;
+            
+            //if(length == 0)
+            //    length = data.length;
+        }
+        else
+        {
+            //Unsure what to do here
+            //NSLog(@"This is odd... %d", result);
         }
         
         //Advance to next object, ASN1_get_object has already increased
@@ -99,6 +81,86 @@
     
     //Return an NSArray if we found more that one root object
     return [decodedObjects count]==1?decodedObjects[0]:[decodedObjects copy];
+}
+
++ (id)decodeConstructObject:(int)objectType data:(NSData *)constructObjectData
+{
+    id returnObject = nil;
+    
+    switch(objectType)
+    {
+        case V_ASN1_SET:
+            returnObject = [[RTKASN1Set alloc] initWithData:constructObjectData];
+            break;
+            
+        case V_ASN1_SEQUENCE:
+            returnObject = [[RTKASN1Sequence alloc] initWithData:constructObjectData];
+            break;
+            
+        default:
+            
+            break;
+    }
+    
+    return returnObject;
+}
+
++ (id)decodeUniversalObject:(int)objectType data:(NSData *)universalObjectData
+{
+    id returnObject = nil;
+    
+    switch(objectType)
+    {
+        case V_ASN1_INTEGER:
+            //This will only correctly decode integers of one byte
+        {
+            int length = universalObjectData.length;
+            int integer = 0;
+            int maxSiftValue = ({
+                int shiftVal = (int)pow(2, (length + 1));
+                shiftVal = (shiftVal==4?0:shiftVal);
+                shiftVal; //return
+            });
+            
+            for(int i = 0; i < universalObjectData.length; i++)
+            {
+                long long value = 0;
+                [universalObjectData getBytes:&value range:NSMakeRange(i, 1)];
+                integer += (value << maxSiftValue);
+                maxSiftValue -= 8;
+            }
+
+            returnObject = @(integer);
+        }
+            break;
+            
+        case V_ASN1_OCTET_STRING:
+        {
+            returnObject = [[RTKASN1OctetString alloc] initWithData:universalObjectData];
+        }
+            break;
+            
+        case V_ASN1_UTF8STRING:
+        {
+            returnObject = [[NSString alloc] initWithData:universalObjectData
+                                                 encoding:NSUTF8StringEncoding];
+        }
+            break;
+        
+        case V_ASN1_IA5STRING:
+        {
+            returnObject = [[NSString alloc] initWithData:universalObjectData
+                                                 encoding:NSASCIIStringEncoding];
+        }
+            break;
+            
+        default:
+            //Currently we dont support this type, so just copy the data
+            //returnObject = [universalObjectData copy];
+            break;
+    }
+    
+    return returnObject;
 }
 
 @end
