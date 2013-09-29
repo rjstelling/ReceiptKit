@@ -638,7 +638,7 @@
 				INFOPLIST_FILE = "ReceiptKit/ReceiptKit-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/rjstelling/Documents/ReceiptKit/ReceiptKit/open-ssl/lib",
+					"$(PROJECT_DIR)/open-ssl/lib",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -655,7 +655,7 @@
 				INFOPLIST_FILE = "ReceiptKit/ReceiptKit-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/rjstelling/Documents/ReceiptKit/ReceiptKit/open-ssl/lib",
+					"$(PROJECT_DIR)/open-ssl/lib",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
