@@ -9,11 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "RTKASN1Object.h"
 
-@interface RTKOctetString : RTKASN1Object
+@interface RTKASN1OctetString : RTKASN1Object
 
-@property (readonly, nonatomic) int type;
-@property (readonly, nonatomic) NSData *data;
+//@property (readonly, nonatomic) int type;
+@property (readonly, nonatomic) id data;
 
-- (instancetype)initWithData:(NSData *)seqData;
+- (instancetype)initWithData:(NSData *)strData;
 
 @end
