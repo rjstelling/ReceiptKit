@@ -31,6 +31,18 @@
     return self;
 }
 
+#pragma mark - NSObject
+
+- (NSString *)description
+{
+    NSString *desc = [NSString stringWithFormat:@"<%@ (Quantity: %@): %@ (%@), %@ (%@)>",
+                      self.productIdentifier, self.quantity, self.transactionIdentifier, self.originalTransactionIdentifier, self.purchaseDate, self.originalPurchaseDate];
+    
+    return desc;
+}
+
+#pragma mark - Helpers
+
 - (void)decodeIAPProperties:(RTKASN1Set *)iapSetObject
 {
     for(RTKASN1Sequence *iapSeq in iapSetObject)

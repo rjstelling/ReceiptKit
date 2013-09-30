@@ -30,6 +30,18 @@
     return self;
 }
 
+#pragma mark - NSObject 
+
+- (NSString *)description
+{
+    NSString *desc = [NSString stringWithFormat:@"<%@: %@ (%@), %d In App Purchases: %@>",
+                      self.bundleIdentifier, self.bundleVersion, self.originalVersion, [self.inAppPurchases count], self.inAppPurchases];
+    
+    return desc;
+}
+
+#pragma mark - Helpers
+
 - (void)extractProperties:(RTKASN1Set *)decodedPayload
 {
     //Loging Info
