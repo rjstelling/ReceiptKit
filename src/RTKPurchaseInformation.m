@@ -35,7 +35,8 @@
 - (NSString *)description
 {
     NSString *desc = [NSString stringWithFormat:@"<%@: %@ (%@), %d In App Purchases: %@>",
-                      self.bundleIdentifier, self.bundleVersion, self.originalVersion, [self.inAppPurchases count], self.inAppPurchases];
+                      self.bundleIdentifier, self.bundleVersion, self.originalVersion,
+                      [self.inAppPurchases count], self.inAppPurchases];
     
     return desc;
 }

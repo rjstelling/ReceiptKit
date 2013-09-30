@@ -36,7 +36,9 @@
 - (NSString *)description
 {
     NSString *desc = [NSString stringWithFormat:@"<%@ (Quantity: %@): %@ (%@), %@ (%@)>",
-                      self.productIdentifier, self.quantity, self.transactionIdentifier, self.originalTransactionIdentifier, self.purchaseDate, self.originalPurchaseDate];
+                      self.productIdentifier, self.quantity,
+                      self.transactionIdentifier, self.originalTransactionIdentifier,
+                      self.purchaseDate, self.originalPurchaseDate];
     
     return desc;
 }
