@@ -9,6 +9,7 @@
 #import "RTKReceiptParser.h"
 #import "NSData+Crypto.h"
 #import <openssl/pkcs7.h>
+#include <openssl/sha.h>
 
 #import "RTKPurchaseInformation.h"
 
@@ -129,13 +130,20 @@
         //uuid + bundle id + opaque
         uuid_t uuidBytes;
         [uuid getUUIDBytes:uuidBytes];
+
+        //The bundle id needs to be pre-pended with the UTF8 ASN.1 type (12) and
+        //the length of the string
+        char pre[2] = {12, bundleIdentifier.length};
+        NSMutableData *bundleIDData = [NSMutableData dataWithCapacity:bundleIdentifier.length+2];
+        [bundleIDData appendBytes:pre length:2];
+        [bundleIDData appendBytes:[bundleIdentifier UTF8String] length:bundleIdentifier.length];
         
         [data appendBytes:uuidBytes length:sizeof(uuid_t)];
-        [data appendData:[bundleIdentifier dataUsingEncoding:NSUTF8StringEncoding]];
         [data appendBytes:self.purchaseInfo.opaqueValue.bytes length:self.purchaseInfo.opaqueValue.length];
+        [data appendData:bundleIDData];
         
         NSData *sha1 = [data sha1Value];
-        
+    
         success = [sha1 isEqualToData:self.purchaseInfo.hash];
     }
     
