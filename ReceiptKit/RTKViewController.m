@@ -33,6 +33,8 @@
     RTKReceiptParser *parser = [[RTKReceiptParser alloc] initWithReceipt:receipt certificate:cert];
     BOOL isBundleIDValid = [parser isReceiptValidForDevice:@"com.empiricalmagic.mustard-mag"];
     
+    NSLog(@"Purchase Info: %@", parser.purchaseInfo);
+    
     if(isBundleIDValid)
     {
         NSLog(@"Bundle ID is valid.");
