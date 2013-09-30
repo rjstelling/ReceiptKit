@@ -30,16 +30,28 @@
 
     NSAssert(cert, @"Missing Cert. Data");
     
-    BOOL isReceiptValid = [RTKReceiptParser isReceiptValid:receipt certificate:cert];
+    RTKReceiptParser *parser = [[RTKReceiptParser alloc] initWithReceipt:receipt certificate:cert];
+    BOOL isBundleIDValid = [parser isReceiptValidForDevice:@"com.empiricalmagic.mustard-mag"];
     
-    if(isReceiptValid)
+    if(isBundleIDValid)
     {
-        NSLog(@"Receipt Data is valid.");
+        NSLog(@"Bundle ID is valid.");
     }
     else
     {
         NSLog(@"ERROR");
     }
+    
+//    BOOL isReceiptValid = [RTKReceiptParser isReceiptValid:receipt certificate:cert];
+//    
+//    if(isReceiptValid)
+//    {
+//        NSLog(@"Receipt Data is valid.");
+//    }
+//    else
+//    {
+//        NSLog(@"ERROR");
+//    }
 }
 
 - (void)didReceiveMemoryWarning

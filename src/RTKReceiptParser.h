@@ -8,28 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
-// ASN.1 values for the App Store receipt
-typedef NS_ENUM(NSInteger, RTKReceiptID)
-{
-    RTKBundleID = 2,
-    RTKVersion = 3,
-    RTKOpaqueValue = 4,
-    RTKHash = 5, //https://developer.apple.com/library/mac/releasenotes/General/ValidateAppStoreReceipt/#//apple_ref/doc/uid/TP40010573-CH1-SW14
-    RTKInAppPurchase = 17,
-    RTKOriginalVersion = 19,
-    //RTKExpiryDate = 21,
-    
-    //In App
-    RTKQuantity = 1701,
-    RTKProductIdentifier = 1702,
-    RTKTransactionIdentifier = 1703,
-    RTKPurchaseDate = 1704,
-    RTKOriginalTransactionIdentifier =1705,
-    RTKOriginalPurchaseDate = 1706,
-};
+@class RTKPurchaseInformation;
 
 @interface RTKReceiptParser : NSObject
 
-+ (BOOL)isReceiptValid:(NSData *)receiptData certificate:(NSData *)certificateData;
+@property (readonly, nonatomic) RTKPurchaseInformation *purchaseInfo;
+
+- (instancetype)initWithReceipt:(NSData *)receiptData certificate:(NSData *)certificateData;
+
+/// Do not read the values of `bundleIdentifier` or `bundleVersion` directly
+/// from the Info.plist, as it is too eay to alter. Instead, hard code the
+/// bundle identifier and version, preferably in an obfuscated way.
+- (BOOL)isReceiptValidForDevice:(NSString *)bundleIdentifier;
 
 @end

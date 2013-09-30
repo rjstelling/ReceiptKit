@@ -13,6 +13,21 @@
 #import "RTKASN1Sequence.h"
 #import "RTKASN1OctetString.h"
 
+/*
+ ReceiptModule DEFINITIONS ::=
+ BEGIN
+ 
+ ReceiptAttribute ::= SEQUENCE {
+ type    INTEGER,
+ version INTEGER,
+ value   OCTET STRING
+ }
+ 
+ Payload ::= SET OF ReceiptAttribute
+ 
+ END
+ */
+
 @implementation RTKASN1Object
 
 + (id)decodeASN1Data:(NSData *)data
