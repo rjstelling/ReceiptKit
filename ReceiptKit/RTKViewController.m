@@ -9,10 +9,6 @@
 #import "RTKViewController.h"
 #import "RTKReceiptParser.h"
 
-@interface RTKViewController ()
-
-@end
-
 @implementation RTKViewController
 
 - (void)viewDidLoad
@@ -43,17 +39,6 @@
     {
         NSLog(@"ERROR");
     }
-    
-//    BOOL isReceiptValid = [RTKReceiptParser isReceiptValid:receipt certificate:cert];
-//    
-//    if(isReceiptValid)
-//    {
-//        NSLog(@"Receipt Data is valid.");
-//    }
-//    else
-//    {
-//        NSLog(@"ERROR");
-//    }
 }
 
 - (void)didReceiveMemoryWarning
