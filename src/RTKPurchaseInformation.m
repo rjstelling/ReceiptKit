@@ -45,21 +45,6 @@
 
 - (void)extractProperties:(RTKASN1Set *)decodedPayload
 {
-    //Loging Info
-//    NSDictionary *typeIDDictionary = @{@(RTKBundleID) : @"Bundle ID",
-//                                       @(RTKVersion) : @"Version",
-//                                       @(RTKOriginalVersion) : @"Original Version",
-//                                       /*@(RTKExpiryDate) : @"Expiry Date"*/
-//                                       @(RTKOpaqueValue) : @"Opaque Value",
-//                                       @(RTKHash) : @"Hash",
-//                                       @(RTKInAppPurchase) : @"In App Purchase",
-//                                       @(RTKQuantity) : @"Quantity",
-//                                       @(RTKProductIdentifier) : @"Product Identifier",
-//                                       @(RTKTransactionIdentifier) : @"Transaction Identifier",
-//                                       @(RTKPurchaseDate) : @"Purchase Date",
-//                                       @(RTKOriginalTransactionIdentifier) : @"Original Transaction Identifier",
-//                                       @(RTKOriginalPurchaseDate) : @"Original Purchase Date"};
-    
     for(RTKASN1Sequence *seq in (RTKASN1Set *)decodedPayload)
     {
         NSInteger typeID = [seq[0] integerValue];
@@ -105,43 +90,6 @@
                 //Undocumented types
                 break;
         }
-        
-//        //These are the only documented Type IDs
-//        //https://developer.apple.com/library/mac/releasenotes/General/ValidateAppStoreReceipt/
-//        if(typeID == RTKBundleID || typeID == RTKVersion || typeID == RTKOriginalVersion)
-//        {
-//            NSLog(@"%@: %@", typeIDDictionary[@(typeID)], ((RTKASN1OctetString *)seq[2]).data);
-//        }
-//        else if(typeID == RTKOpaqueValue || typeID == RTKHash)
-//        {
-//            //These are just data so we cant print them out
-//            NSData *data = ((RTKASN1OctetString *)seq[2]).data;
-//            NSLog(@"%@ -> (length: %d)", typeIDDictionary[@(typeID)], data.length);
-//        }
-//        else if(typeID == RTKInAppPurchase)
-//        {
-//            static int count = 0; count++;
-//            if([((RTKASN1OctetString *)seq[2]).data isKindOfClass:[RTKASN1Set class]])
-//            {
-//                for(RTKASN1Sequence *iapSeq in ((RTKASN1OctetString *)seq[2]).data)
-//                {
-//                    NSInteger iapTypeID = [iapSeq[0] integerValue];
-//                    
-//                    if(iapTypeID >= RTKQuantity && iapTypeID <= RTKOriginalPurchaseDate)
-//                    {
-//                        NSLog(@"%@ (%d): %@: %@", typeIDDictionary[@(typeID)], count,
-//                              typeIDDictionary[@(iapTypeID)],
-//                              ((RTKASN1OctetString *)iapSeq[2]).data);
-//                    }
-//                }
-//            }
-//            //                id obj = ((RTKASN1OctetString *)seq[2]).data;
-//            //                NSLog(@"%@", obj);
-//        }
-//        else
-//        {
-//            //Ignore these as thay are internal and not documented
-//        }
     }
 }
 
