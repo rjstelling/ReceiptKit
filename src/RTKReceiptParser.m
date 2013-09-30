@@ -8,8 +8,6 @@
 
 #import "RTKReceiptParser.h"
 #import "NSData+Crypto.h"
-#import <openssl/pkcs7.h>
-#include <openssl/sha.h>
 
 #import "RTKPurchaseInformation.h"
 
@@ -17,7 +15,7 @@
 #import "RTKASN1Object.h"
 #import "RTKASN1Set.h"
 #import "RTKASN1Sequence.h"
-#import "RTKASN1OctetString.h" //TODO: refactor name
+#import "RTKASN1OctetString.h"
 
 @implementation RTKReceiptParser
 {
