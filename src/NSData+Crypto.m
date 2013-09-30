@@ -9,6 +9,7 @@
 #import "NSData+Crypto.h"
 #import <openssl/x509.h>
 #import <openssl/pkcs7.h>
+#import <CommonCrypto/CommonDigest.h>
 
 @implementation NSData (Crypto)
 
@@ -59,5 +60,17 @@
     }
 }
 
+- (NSData *)sha1Value
+{
+    NSData *sha1Data = nil;
+    unsigned char sha1[CC_SHA1_DIGEST_LENGTH];
+    
+    if(CC_SHA1(self.bytes, self.length, sha1))
+    {
+        sha1Data = [NSData dataWithBytes:sha1 length:CC_SHA1_DIGEST_LENGTH];
+    }
+    
+    return sha1Data;
+}
 
 @end

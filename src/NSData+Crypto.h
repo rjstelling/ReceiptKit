@@ -13,4 +13,6 @@
 //Returns the payload, if any
 - (NSData *)PKCS7Verify:(NSData *)certificateData error:(NSError **)error;
 
+- (NSData *)sha1Value;
+
 @end
