@@ -74,7 +74,7 @@
             
             case RTKExpiryDate:
                 _expiryDate = [NSDate dateFromReceiptDateString:((RTKASN1OctetString *)seq[2]).data];
-            break;
+                break;
                 
             case RTKInAppPurchase:
             {

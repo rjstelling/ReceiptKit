@@ -79,9 +79,17 @@
             case RTKOriginalPurchaseDate:
                 _originalPurchaseDate = [NSDate dateFromReceiptDateString:((RTKASN1OctetString *)iapSeq[2]).data];
                 break;
-
+                
+            case RTKCancellationDate:
+                _cancellationDate = [NSDate dateFromReceiptDateString:((RTKASN1OctetString *)iapSeq[2]).data];
+                break;
+                
             case RTKSubscriptionExpiryDate:
                 _subscriptionExpiryDate = [NSDate dateFromReceiptDateString:((RTKASN1OctetString *)iapSeq[2]).data];
+                break;
+                
+            case RTKWebOrderLineItemID:
+                _webOrderLineItemID = ((RTKASN1OctetString *)iapSeq[2]).data;
                 break;
                 
             default:
