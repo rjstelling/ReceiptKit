@@ -16,6 +16,17 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
+    [self retest:self];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)retest:(id)sender
+{
     NSURL *receiptURL = [[NSBundle mainBundle] URLForResource:@"receipt" withExtension:@""];
     NSData *receipt = [NSData dataWithContentsOfURL:receiptURL];
     
@@ -23,13 +34,14 @@
     
     NSURL *certURL = [[NSBundle mainBundle] URLForResource:@"apple-cert" withExtension:@""];
     NSData *cert = [NSData dataWithContentsOfURL:certURL];
-
+    
     NSAssert(cert, @"Missing Cert. Data");
     
     RTKReceiptParser *parser = [[RTKReceiptParser alloc] initWithReceipt:receipt certificate:cert];
     BOOL isBundleIDValid = [parser isReceiptValidForDevice:@"com.empiricalmagic.mustard-mag"];
     
-    NSLog(@"Purchase Info: %@", parser.purchaseInfo);
+    if(isBundleIDValid)
+        NSLog(@"Purchase Info: %@", parser.purchaseInfo);
     
     if(isBundleIDValid)
     {
@@ -39,12 +51,6 @@
     {
         NSLog(@"ERROR");
     }
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end
