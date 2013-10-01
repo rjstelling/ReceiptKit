@@ -13,15 +13,9 @@
 
 @implementation RTKASN1OctetString
 
-- (instancetype)initWithData:(NSData *)strData
+- (id)data
 {
-    if(self = [super init])
-    {
-        //This should be a set or sequence
-        _data = [RTKASN1OctetString decodeASN1Data:strData];
-    }
-    
-    return self;
+    return _decodedData;
 }
 
 @end

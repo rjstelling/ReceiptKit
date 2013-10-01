@@ -94,6 +94,10 @@
         //of the other decoded objects
         decodedPayload = [RTKASN1Object decodeASN1Data:payload];
     }
+    else
+    {
+        NSLog(@"Error: %@", error);
+    }
 
     return decodedPayload;
 }

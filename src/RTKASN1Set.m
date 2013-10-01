@@ -13,19 +13,17 @@
     NSOrderedSet *_setOrderedSet;
 }
 
-- (instancetype)initWithData:(NSData *)setData
+- (instancetype)initWithData:(NSData *)asn1Data
 {
-    if(self = [super init])
+    if(self = [super initWithData:asn1Data])
     {
-        id decodedObjects = [RTKASN1Set decodeASN1Data:setData];
-        
-        if([decodedObjects isKindOfClass:[NSArray class]])
+        if([_decodedData isKindOfClass:[NSArray class]])
         {
-            _setOrderedSet = [NSOrderedSet orderedSetWithArray:decodedObjects];
+            _setOrderedSet = [NSOrderedSet orderedSetWithArray:_decodedData];
         }
         else //single item
         {
-            _setOrderedSet = [NSOrderedSet orderedSetWithObject:decodedObjects];
+            _setOrderedSet = [NSOrderedSet orderedSetWithObject:_decodedData];
         }
     }
     

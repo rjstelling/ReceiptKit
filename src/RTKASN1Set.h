@@ -11,8 +11,6 @@
 
 @interface RTKASN1Set : RTKASN1Object <NSFastEnumeration>
 
-- (instancetype)initWithData:(NSData *)setData;
-
 //Access
 - (id)objectAtIndexedSubscript:(NSUInteger)idx;
 

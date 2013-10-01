@@ -11,9 +11,6 @@
 
 @interface RTKASN1OctetString : RTKASN1Object
 
-//@property (readonly, nonatomic) int type;
 @property (readonly, nonatomic) id data;
-
-- (instancetype)initWithData:(NSData *)strData;
 
 @end

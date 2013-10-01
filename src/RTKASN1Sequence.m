@@ -13,19 +13,17 @@
     NSArray *_seqArray;
 }
 
-- (instancetype)initWithData:(NSData *)seqData
+- (instancetype)initWithData:(NSData *)asn1Data
 {
-    if(self = [super init])
+    if(self = [super initWithData:asn1Data])
     {
-        id decodedObjects = [RTKASN1Sequence decodeASN1Data:seqData];
-        
-        if([decodedObjects isKindOfClass:[NSArray class]])
+        if([_decodedData isKindOfClass:[NSArray class]])
         {
-            _seqArray = decodedObjects;
+            _seqArray = _decodedData;
         }
         else //single item
         {
-            _seqArray = @[decodedObjects];
+            _seqArray = @[_decodedData];
         }
     }
     

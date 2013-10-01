@@ -9,7 +9,12 @@
 #import <Foundation/Foundation.h>
 
 @interface RTKASN1Object : NSObject
+{
+    @protected
+    id _decodedData;
+}
 
 + (id)decodeASN1Data:(NSData *)data;
+- (instancetype)initWithData:(NSData *)asn1Data;
 
 @end

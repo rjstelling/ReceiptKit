@@ -15,7 +15,7 @@ typedef NS_ENUM(NSInteger, RTKReceiptID)
     RTKBundleID = 2,
     RTKVersion = 3,
     RTKOpaqueValue = 4,
-    RTKHash = 5, //https://developer.apple.com/library/mac/releasenotes/General/ValidateAppStoreReceipt/#//apple_ref/doc/uid/TP40010573-CH1-SW14
+    RTKHash = 5,
     RTKInAppPurchase = 17,
     RTKOriginalVersion = 19,
     //RTKExpiryDate = 21,
@@ -33,13 +33,21 @@ typedef NS_ENUM(NSInteger, RTKReceiptID)
 
 @interface RTKPurchaseInformation : NSObject
 
+///The bundle identifier of the app this receipt was created for
 @property (readonly, nonatomic) NSString *bundleIdentifier;
+
+///The version string
 @property (readonly, nonatomic) NSString *bundleVersion;
 @property (readonly, nonatomic) NSString *originalVersion;
-@property (readonly, nonatomic) NSData *opaqueValue;
-@property (readonly, nonatomic) NSData *hash; //SHA-1
 
-@property (readonly, nonatomic) NSSet *inAppPurchases; //NSSet of RTKInAppPurchase
+//Raw bytes used when computing the hash
+@property (readonly, nonatomic) NSData *opaqueValue;
+
+//Raw bytes of a SHA-1 hash, compare the computed has to this, if they match bundleIdentifier is valid
+@property (readonly, nonatomic) NSData *hash;
+
+///An NSSet of RTKInAppPurchase objects
+@property (readonly, nonatomic) NSSet *inAppPurchases;
 
 - (instancetype)initWithASN1Object:(RTKASN1Object *)asn1Object;
 

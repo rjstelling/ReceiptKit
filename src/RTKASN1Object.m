@@ -30,6 +30,19 @@
 
 @implementation RTKASN1Object
 
+- (instancetype)initWithData:(NSData *)asn1Data
+{
+    if(self = [super init])
+    {
+        _decodedData = [RTKASN1Object decodeASN1Data:asn1Data];
+        
+        if(!_decodedData)
+            self = nil;
+    }
+    
+    return self;
+}
+
 + (id)decodeASN1Data:(NSData *)data
 {
     const uint8_t *locationInData = data.bytes;
