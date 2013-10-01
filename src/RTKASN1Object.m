@@ -91,9 +91,6 @@
             [decodedObjects addObject:[data copy]];
             
             break;
-            
-            //if(length == 0)
-            //    length = data.length;
         }
         else
         {
@@ -140,7 +137,6 @@
     switch(objectType)
     {
         case V_ASN1_INTEGER:
-            //This will only correctly decode integers of one byte
         {
             int length = universalObjectData.length;
             int integer = 0;
@@ -183,8 +179,7 @@
             break;
             
         default:
-            //Currently we dont support this type, so just copy the data
-            //returnObject = [universalObjectData copy];
+            //Currently we don't support this type
             break;
     }
     
