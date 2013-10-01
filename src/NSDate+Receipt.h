@@ -12,4 +12,6 @@
 
 + (NSDate *)dateFromReceiptDateString:(NSString *)dateStr;
 
+- (NSString *)shortDate;
+
 @end

@@ -36,10 +36,11 @@
 
 - (NSString *)description
 {
-    NSString *desc = [NSString stringWithFormat:@"<%@ (Quantity: %@): %@ (%@), %@ (%@)>%@",
+    NSString *desc = [NSString stringWithFormat:@"<%@ (Qty: %@): %@ (%@), %@ (%@), %@>%@",
                       self.productIdentifier, self.quantity,
                       self.transactionIdentifier, self.originalTransactionIdentifier,
-                      self.purchaseDate, self.originalPurchaseDate,
+                      [self.purchaseDate shortDate], [self.originalPurchaseDate shortDate],
+                      [self.subscriptionExpiryDate shortDate],
                       self.isOriginalTransaction?@" <-- Original Transaction":@""];
     
     return desc;

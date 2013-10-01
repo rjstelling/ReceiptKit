@@ -19,4 +19,12 @@
     return [formatter dateFromString:dateStr];
 }
 
+- (NSString *)shortDate
+{
+    return
+    [NSDateFormatter localizedStringFromDate:self
+                                   dateStyle:NSDateFormatterShortStyle
+                                   timeStyle:NSDateFormatterShortStyle];
+}
+
 @end
