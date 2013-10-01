@@ -11,6 +11,7 @@
 #import "RTKASN1Set.h"
 #import "RTKASN1Sequence.h"
 #import "RTKASN1OctetString.h"
+#import "NSDate+Receipt.h"
 
 @implementation RTKInAppPurchaseInformation
 
@@ -63,7 +64,7 @@
                 break;
                 
             case RTKPurchaseDate:
-                _purchaseDate = [self formatReceiptDateFromString:((RTKASN1OctetString *)iapSeq[2]).data];
+                _purchaseDate = [NSDate dateFromReceiptDateString:((RTKASN1OctetString *)iapSeq[2]).data];
                 break;
                 
             case RTKTransactionIdentifier:
@@ -75,7 +76,7 @@
                 break;
                 
             case RTKOriginalPurchaseDate:
-                _originalPurchaseDate = [self formatReceiptDateFromString:((RTKASN1OctetString *)iapSeq[2]).data];
+                _originalPurchaseDate = [NSDate dateFromReceiptDateString:((RTKASN1OctetString *)iapSeq[2]).data];
                 break;
 
             default:
@@ -85,15 +86,6 @@
     }
     
     _originalTransaction = [self.originalTransactionIdentifier isEqualToString:self.transactionIdentifier];
-}
-
-- (NSDate *)formatReceiptDateFromString:(NSString *)dateStr
-{
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
-    NSDate *myDate = [formatter dateFromString:dateStr];
-    
-    return myDate;
 }
     
 @end

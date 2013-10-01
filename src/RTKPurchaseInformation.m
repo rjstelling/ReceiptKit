@@ -10,6 +10,7 @@
 #import "RTKASN1Set.h"
 #import "RTKASN1Sequence.h"
 #import "RTKASN1OctetString.h"
+#import "NSDate+Receipt.h"
 
 @implementation RTKPurchaseInformation
 
@@ -34,9 +35,9 @@
 
 - (NSString *)description
 {
-    NSString *desc = [NSString stringWithFormat:@"<%@: %@ (%@), %d In App Purchases: %@>",
+    NSString *desc = [NSString stringWithFormat:@"<%@: %@ (%@), %lu In App Purchases: %@>",
                       self.bundleIdentifier, self.bundleVersion, self.originalVersion,
-                      [self.inAppPurchases count], self.inAppPurchases];
+                      (unsigned long)[self.inAppPurchases count], self.inAppPurchases];
     
     return desc;
 }
@@ -71,6 +72,10 @@
                 _hash = ((RTKASN1OctetString *)seq[2]).data;
                 break;
             
+            case RTKExpiryDate:
+                _expiryDate = [NSDate dateFromReceiptDateString:((RTKASN1OctetString *)seq[2]).data];
+            break;
+                
             case RTKInAppPurchase:
             {
                 RTKInAppPurchaseInformation *iap = [[RTKInAppPurchaseInformation alloc] initWithASN1Object:((RTKASN1OctetString *)seq[2]).data];
