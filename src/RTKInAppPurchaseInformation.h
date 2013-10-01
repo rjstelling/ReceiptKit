@@ -12,6 +12,7 @@
 
 @interface RTKInAppPurchaseInformation : NSObject
 
+@property (readonly, nonatomic, getter=isOriginalTransaction) BOOL originalTransaction;
 @property (readonly, nonatomic) NSNumber *quantity;
 @property (readonly, nonatomic) NSString *productIdentifier;
 @property (readonly, nonatomic) NSString *transactionIdentifier;
