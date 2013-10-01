@@ -27,6 +27,7 @@ typedef NS_ENUM(NSInteger, RTKReceiptID)
     RTKPurchaseDate = 1704,
     RTKOriginalTransactionIdentifier =1705,
     RTKOriginalPurchaseDate = 1706,
+    RTKSubscriptionExpiryDate = 1708,
 };
 
 @class RTKASN1Object;

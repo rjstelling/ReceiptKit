@@ -19,6 +19,7 @@
 @property (readonly, nonatomic) NSDate *purchaseDate;
 @property (readonly, nonatomic) NSString *originalTransactionIdentifier;
 @property (readonly, nonatomic) NSDate *originalPurchaseDate;
+@property (readonly, nonatomic) NSDate *subscriptionExpiryDate;
 
 - (instancetype)initWithASN1Object:(RTKASN1Object *)asn1Object;
 
