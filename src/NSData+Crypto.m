@@ -11,11 +11,13 @@
 #import <openssl/pkcs7.h>
 #import <CommonCrypto/CommonDigest.h>
 
+NSString *const RTKDataCryptoErrorDomain = @"com.empiricalmagic.nsdata+crypto.errors";
+
 @implementation NSData (Crypto)
 
 - (BIO *)BIOValue
 {
-    return BIO_new_mem_buf((void *)[self bytes], [self length]);
+    return BIO_new_mem_buf((void *)[self bytes], (int)[self length]);
 }
 
 - (NSData *)PKCS7Verify:(NSData *)certificateData error:(NSError *__autoreleasing *)error
@@ -48,14 +50,16 @@
     if(result == 1)
     {
         const uint8_t *data = malloc(b_receiptPayload->num_write);
-        BIO_read(b_receiptPayload, (void *)data, b_receiptPayload->num_write);
+        BIO_read(b_receiptPayload, (void *)data, (int)b_receiptPayload->num_write);
         
         NSData *payload = [NSData dataWithBytes:data length:b_receiptPayload->num_write];
         return payload;
     }
     else
     {
-        //TODO: Make error here
+        *error = [NSError errorWithDomain:RTKDataCryptoErrorDomain
+                                     code:1
+                                 userInfo:@{ NSLocalizedDescriptionKey : @"PKCS7 verifcation failed.", @"open-ssl-error" : @(result) }];
         return nil;
     }
 }
@@ -65,7 +69,7 @@
     NSData *sha1Data = nil;
     unsigned char sha1[CC_SHA1_DIGEST_LENGTH];
     
-    if(CC_SHA1(self.bytes, self.length, sha1))
+    if(CC_SHA1(self.bytes, (int)self.length, sha1))
     {
         sha1Data = [NSData dataWithBytes:sha1 length:CC_SHA1_DIGEST_LENGTH];
     }

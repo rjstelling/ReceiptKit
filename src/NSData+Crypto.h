@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString *const RTKDataCryptoErrorDomain;
+
 @interface NSData (Crypto)
 
 //Returns the payload, if any
