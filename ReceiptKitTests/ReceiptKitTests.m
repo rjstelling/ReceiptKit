@@ -1,18 +1,18 @@
 //
-//  ReceiptKitTests.m
-//  ReceiptKitTests
+//  receiptkitTests.m
+//  receiptkitTests
 //
-//  Created by Richard Stelling on 26/09/2013.
+//  Created by Richard Stelling on 01/10/2013.
 //  Copyright (c) 2013 Empirical Magic Ltd. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
 
-@interface ReceiptKitTests : XCTestCase
+@interface receiptkitTests : XCTestCase
 
 @end
 
-@implementation ReceiptKitTests
+@implementation receiptkitTests
 
 - (void)setUp
 {

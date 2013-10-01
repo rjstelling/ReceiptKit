@@ -85,7 +85,7 @@
             //NSLog(@"Data is a specific type (int, bool et. al.)");
             [decodedObjects addObject:[self decodeUniversalObject:type data:asn1ObjectData]];
         }
-        else if(result == V_ASN1_CONTEXT_SPECIFIC)
+        else if(result == V_ASN1_CONTEXT_SPECIFIC || xclass == V_ASN1_CONTEXT_SPECIFIC)
         {
             //NSLog(@"Context specific (just copy everything)");
             [decodedObjects addObject:[data copy]];

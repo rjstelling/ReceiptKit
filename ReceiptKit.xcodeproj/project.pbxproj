@@ -12,6 +12,23 @@
 		E80F868B17F995110011F9C8 /* RTKPurchaseInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = E80F868A17F995110011F9C8 /* RTKPurchaseInformation.m */; };
 		E80F868E17F9964E0011F9C8 /* RTKInAppPurchaseInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = E80F868D17F9964E0011F9C8 /* RTKInAppPurchaseInformation.m */; };
 		E885285E17F4C31900A804E4 /* RTKASN1Object.m in Sources */ = {isa = PBXBuildFile; fileRef = E885285D17F4C31900A804E4 /* RTKASN1Object.m */; };
+		E8B36F7417FB1CA8005CD9D9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8B6317817F481C10060E6CB /* Foundation.framework */; };
+		E8B36F7917FB1CA8005CD9D9 /* receiptkit.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E8B36F7817FB1CA8005CD9D9 /* receiptkit.h */; };
+		E8B36F7B17FB1CA8005CD9D9 /* receiptkit.m in Sources */ = {isa = PBXBuildFile; fileRef = E8B36F7A17FB1CA8005CD9D9 /* receiptkit.m */; };
+		E8B36F8117FB1CA8005CD9D9 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8B6319717F481C10060E6CB /* XCTest.framework */; };
+		E8B36F8217FB1CA8005CD9D9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8B6317817F481C10060E6CB /* Foundation.framework */; };
+		E8B36F8317FB1CA8005CD9D9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8B6317C17F481C10060E6CB /* UIKit.framework */; };
+		E8B36F8617FB1CA8005CD9D9 /* libreceiptkit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E8B36F7317FB1CA8005CD9D9 /* libreceiptkit.a */; };
+		E8B36F8C17FB1CA8005CD9D9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E8B36F8A17FB1CA8005CD9D9 /* InfoPlist.strings */; };
+		E8B36F8E17FB1CA8005CD9D9 /* receiptkitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E8B36F8D17FB1CA8005CD9D9 /* receiptkitTests.m */; };
+		E8B36F9517FB1D5B005CD9D9 /* RTKReceiptParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E8B6320B17F489AA0060E6CB /* RTKReceiptParser.m */; };
+		E8B36F9617FB1D5B005CD9D9 /* RTKPurchaseInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = E80F868A17F995110011F9C8 /* RTKPurchaseInformation.m */; };
+		E8B36F9717FB1D5B005CD9D9 /* RTKInAppPurchaseInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = E80F868D17F9964E0011F9C8 /* RTKInAppPurchaseInformation.m */; };
+		E8B36F9817FB1D5B005CD9D9 /* RTKASN1Object.m in Sources */ = {isa = PBXBuildFile; fileRef = E885285D17F4C31900A804E4 /* RTKASN1Object.m */; };
+		E8B36F9917FB1D5B005CD9D9 /* RTKASN1Set.m in Sources */ = {isa = PBXBuildFile; fileRef = E8B6320E17F4BCC20060E6CB /* RTKASN1Set.m */; };
+		E8B36F9A17FB1D5B005CD9D9 /* RTKASN1Sequence.m in Sources */ = {isa = PBXBuildFile; fileRef = E80CD4C317F4D8AA0079AF4B /* RTKASN1Sequence.m */; };
+		E8B36F9B17FB1D5B005CD9D9 /* RTKASN1OctetString.m in Sources */ = {isa = PBXBuildFile; fileRef = E80CD4C617F511040079AF4B /* RTKASN1OctetString.m */; };
+		E8B36F9C17FB1D5B005CD9D9 /* NSData+Crypto.m in Sources */ = {isa = PBXBuildFile; fileRef = E8B631B317F487070060E6CB /* NSData+Crypto.m */; };
 		E8B6317917F481C10060E6CB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8B6317817F481C10060E6CB /* Foundation.framework */; };
 		E8B6317B17F481C10060E6CB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8B6317A17F481C10060E6CB /* CoreGraphics.framework */; };
 		E8B6317D17F481C10060E6CB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8B6317C17F481C10060E6CB /* UIKit.framework */; };
@@ -29,13 +46,20 @@
 		E8B631AF17F485280060E6CB /* receipt in Resources */ = {isa = PBXBuildFile; fileRef = E8B631AD17F485280060E6CB /* receipt */; };
 		E8B631B017F485280060E6CB /* apple-cert in Resources */ = {isa = PBXBuildFile; fileRef = E8B631AE17F485280060E6CB /* apple-cert */; };
 		E8B631B417F487070060E6CB /* NSData+Crypto.m in Sources */ = {isa = PBXBuildFile; fileRef = E8B631B317F487070060E6CB /* NSData+Crypto.m */; };
-		E8B6320817F487600060E6CB /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E8B6320517F487600060E6CB /* libcrypto.a */; };
-		E8B6320917F487600060E6CB /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E8B6320617F487600060E6CB /* libssl.a */; };
+		E8B6320817F487600060E6CB /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E8B6320517F487600060E6CB /* libcrypto.a */; settings = {ATTRIBUTES = (Weak, ); }; };
+		E8B6320917F487600060E6CB /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E8B6320617F487600060E6CB /* libssl.a */; settings = {ATTRIBUTES = (Weak, ); }; };
 		E8B6320C17F489AA0060E6CB /* RTKReceiptParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E8B6320B17F489AA0060E6CB /* RTKReceiptParser.m */; };
 		E8B6320F17F4BCC20060E6CB /* RTKASN1Set.m in Sources */ = {isa = PBXBuildFile; fileRef = E8B6320E17F4BCC20060E6CB /* RTKASN1Set.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		E8B36F8417FB1CA8005CD9D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E8B6316D17F481C10060E6CB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E8B36F7217FB1CA8005CD9D9;
+			remoteInfo = receiptkit;
+		};
 		E8B6319B17F481C10060E6CB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E8B6316D17F481C10060E6CB /* Project object */;
@@ -44,6 +68,19 @@
 			remoteInfo = ReceiptKit;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E8B36F7117FB1CA8005CD9D9 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				E8B36F7917FB1CA8005CD9D9 /* receiptkit.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		E80CD4C217F4D8AA0079AF4B /* RTKASN1Sequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTKASN1Sequence.h; sourceTree = "<group>"; };
@@ -56,6 +93,14 @@
 		E80F868D17F9964E0011F9C8 /* RTKInAppPurchaseInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTKInAppPurchaseInformation.m; sourceTree = "<group>"; };
 		E885285C17F4C31900A804E4 /* RTKASN1Object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTKASN1Object.h; sourceTree = "<group>"; };
 		E885285D17F4C31900A804E4 /* RTKASN1Object.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTKASN1Object.m; sourceTree = "<group>"; };
+		E8B36F7317FB1CA8005CD9D9 /* libreceiptkit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libreceiptkit.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E8B36F7717FB1CA8005CD9D9 /* receiptkit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "receiptkit-Prefix.pch"; sourceTree = "<group>"; };
+		E8B36F7817FB1CA8005CD9D9 /* receiptkit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = receiptkit.h; sourceTree = "<group>"; };
+		E8B36F7A17FB1CA8005CD9D9 /* receiptkit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = receiptkit.m; sourceTree = "<group>"; };
+		E8B36F8017FB1CA8005CD9D9 /* receiptkitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = receiptkitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E8B36F8917FB1CA8005CD9D9 /* receiptkitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "receiptkitTests-Info.plist"; sourceTree = "<group>"; };
+		E8B36F8B17FB1CA8005CD9D9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E8B36F8D17FB1CA8005CD9D9 /* receiptkitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = receiptkitTests.m; sourceTree = "<group>"; };
 		E8B6317517F481C10060E6CB /* ReceiptKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReceiptKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8B6317817F481C10060E6CB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E8B6317A17F481C10060E6CB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -163,6 +208,25 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		E8B36F7017FB1CA8005CD9D9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E8B36F7417FB1CA8005CD9D9 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E8B36F7D17FB1CA8005CD9D9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E8B36F8117FB1CA8005CD9D9 /* XCTest.framework in Frameworks */,
+				E8B36F8617FB1CA8005CD9D9 /* libreceiptkit.a in Frameworks */,
+				E8B36F8317FB1CA8005CD9D9 /* UIKit.framework in Frameworks */,
+				E8B36F8217FB1CA8005CD9D9 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E8B6317217F481C10060E6CB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -188,6 +252,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E8B36F7517FB1CA8005CD9D9 /* receiptkit */ = {
+			isa = PBXGroup;
+			children = (
+				E8B36F7817FB1CA8005CD9D9 /* receiptkit.h */,
+				E8B36F7A17FB1CA8005CD9D9 /* receiptkit.m */,
+				E8B36F7617FB1CA8005CD9D9 /* Supporting Files */,
+			);
+			path = receiptkit;
+			sourceTree = "<group>";
+		};
+		E8B36F7617FB1CA8005CD9D9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E8B36F7717FB1CA8005CD9D9 /* receiptkit-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E8B36F8717FB1CA8005CD9D9 /* receiptkitTests */ = {
+			isa = PBXGroup;
+			children = (
+				E8B36F8D17FB1CA8005CD9D9 /* receiptkitTests.m */,
+				E8B36F8817FB1CA8005CD9D9 /* Supporting Files */,
+			);
+			path = receiptkitTests;
+			sourceTree = "<group>";
+		};
+		E8B36F8817FB1CA8005CD9D9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E8B36F8917FB1CA8005CD9D9 /* receiptkitTests-Info.plist */,
+				E8B36F8A17FB1CA8005CD9D9 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		E8B6316C17F481C10060E6CB = {
 			isa = PBXGroup;
 			children = (
@@ -195,6 +295,8 @@
 				E8B631B517F487600060E6CB /* open-ssl */,
 				E8B6317E17F481C10060E6CB /* Application */,
 				E8B6319D17F481C10060E6CB /* ReceiptKitTests */,
+				E8B36F7517FB1CA8005CD9D9 /* receiptkit */,
+				E8B36F8717FB1CA8005CD9D9 /* receiptkitTests */,
 				E8B6317717F481C10060E6CB /* Frameworks */,
 				E8B6317617F481C10060E6CB /* Products */,
 			);
@@ -205,6 +307,8 @@
 			children = (
 				E8B6317517F481C10060E6CB /* ReceiptKit.app */,
 				E8B6319617F481C10060E6CB /* ReceiptKitTests.xctest */,
+				E8B36F7317FB1CA8005CD9D9 /* libreceiptkit.a */,
+				E8B36F8017FB1CA8005CD9D9 /* receiptkitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -401,6 +505,41 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		E8B36F7217FB1CA8005CD9D9 /* receiptkit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E8B36F8F17FB1CA8005CD9D9 /* Build configuration list for PBXNativeTarget "receiptkit" */;
+			buildPhases = (
+				E8B36F6F17FB1CA8005CD9D9 /* Sources */,
+				E8B36F7017FB1CA8005CD9D9 /* Frameworks */,
+				E8B36F7117FB1CA8005CD9D9 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = receiptkit;
+			productName = receiptkit;
+			productReference = E8B36F7317FB1CA8005CD9D9 /* libreceiptkit.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		E8B36F7F17FB1CA8005CD9D9 /* receiptkitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E8B36F9217FB1CA8005CD9D9 /* Build configuration list for PBXNativeTarget "receiptkitTests" */;
+			buildPhases = (
+				E8B36F7C17FB1CA8005CD9D9 /* Sources */,
+				E8B36F7D17FB1CA8005CD9D9 /* Frameworks */,
+				E8B36F7E17FB1CA8005CD9D9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E8B36F8517FB1CA8005CD9D9 /* PBXTargetDependency */,
+			);
+			name = receiptkitTests;
+			productName = receiptkitTests;
+			productReference = E8B36F8017FB1CA8005CD9D9 /* receiptkitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		E8B6317417F481C10060E6CB /* ReceiptKit */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E8B631A717F481C10060E6CB /* Build configuration list for PBXNativeTarget "ReceiptKit" */;
@@ -446,6 +585,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Empirical Magic Ltd.";
 				TargetAttributes = {
+					E8B36F7F17FB1CA8005CD9D9 = {
+						TestTargetID = E8B6317417F481C10060E6CB;
+					};
 					E8B6317417F481C10060E6CB = {
 						DevelopmentTeam = X39S8GYQG7;
 					};
@@ -469,11 +611,21 @@
 			targets = (
 				E8B6317417F481C10060E6CB /* ReceiptKit */,
 				E8B6319517F481C10060E6CB /* ReceiptKitTests */,
+				E8B36F7217FB1CA8005CD9D9 /* receiptkit */,
+				E8B36F7F17FB1CA8005CD9D9 /* receiptkitTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		E8B36F7E17FB1CA8005CD9D9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E8B36F8C17FB1CA8005CD9D9 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E8B6317317F481C10060E6CB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -497,6 +649,30 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		E8B36F6F17FB1CA8005CD9D9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E8B36F7B17FB1CA8005CD9D9 /* receiptkit.m in Sources */,
+				E8B36F9C17FB1D5B005CD9D9 /* NSData+Crypto.m in Sources */,
+				E8B36F9B17FB1D5B005CD9D9 /* RTKASN1OctetString.m in Sources */,
+				E8B36F9817FB1D5B005CD9D9 /* RTKASN1Object.m in Sources */,
+				E8B36F9517FB1D5B005CD9D9 /* RTKReceiptParser.m in Sources */,
+				E8B36F9917FB1D5B005CD9D9 /* RTKASN1Set.m in Sources */,
+				E8B36F9717FB1D5B005CD9D9 /* RTKInAppPurchaseInformation.m in Sources */,
+				E8B36F9617FB1D5B005CD9D9 /* RTKPurchaseInformation.m in Sources */,
+				E8B36F9A17FB1D5B005CD9D9 /* RTKASN1Sequence.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E8B36F7C17FB1CA8005CD9D9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E8B36F8E17FB1CA8005CD9D9 /* receiptkitTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E8B6317117F481C10060E6CB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -526,6 +702,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		E8B36F8517FB1CA8005CD9D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E8B36F7217FB1CA8005CD9D9 /* receiptkit */;
+			targetProxy = E8B36F8417FB1CA8005CD9D9 /* PBXContainerItemProxy */;
+		};
 		E8B6319C17F481C10060E6CB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E8B6317417F481C10060E6CB /* ReceiptKit */;
@@ -534,6 +715,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		E8B36F8A17FB1CA8005CD9D9 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E8B36F8B17FB1CA8005CD9D9 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		E8B6318117F481C10060E6CB /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -561,6 +750,86 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		E8B36F9017FB1CA8005CD9D9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				DSTROOT = /tmp/receiptkit.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "receiptkit/receiptkit-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/open-ssl/lib",
+					"/Users/rjstelling/Documents/Mustard\\ Mag/mustard-mag/Projects/receipt-kit/open-ssl/lib",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		E8B36F9117FB1CA8005CD9D9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				DSTROOT = /tmp/receiptkit.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "receiptkit/receiptkit-Prefix.pch";
+				LIBRARY_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/open-ssl/lib",
+					"/Users/rjstelling/Documents/Mustard\\ Mag/mustard-mag/Projects/receipt-kit/open-ssl/lib",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		E8B36F9317FB1CA8005CD9D9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ReceiptKit.app/ReceiptKit";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "receiptkit/receiptkit-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "receiptkitTests/receiptkitTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		E8B36F9417FB1CA8005CD9D9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ReceiptKit.app/ReceiptKit";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "receiptkit/receiptkit-Prefix.pch";
+				INFOPLIST_FILE = "receiptkitTests/receiptkitTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
 		E8B631A517F481C10060E6CB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -728,6 +997,22 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		E8B36F8F17FB1CA8005CD9D9 /* Build configuration list for PBXNativeTarget "receiptkit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E8B36F9017FB1CA8005CD9D9 /* Debug */,
+				E8B36F9117FB1CA8005CD9D9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		E8B36F9217FB1CA8005CD9D9 /* Build configuration list for PBXNativeTarget "receiptkitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E8B36F9317FB1CA8005CD9D9 /* Debug */,
+				E8B36F9417FB1CA8005CD9D9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		E8B6317017F481C10060E6CB /* Build configuration list for PBXProject "ReceiptKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
