@@ -138,7 +138,7 @@
     {
         case V_ASN1_INTEGER:
         {
-            int length = universalObjectData.length;
+            NSUInteger length = universalObjectData.length;
             int integer = 0;
             int maxSiftValue = ({
                 int shiftVal = (int)pow(2, (length + 1));
