@@ -13,7 +13,7 @@
 #define RKANonConsumable @"nonconsumable01"
 #define RKAConsumable @"consumable01"
 
-@interface RKAViewController () <SKProductsRequestDelegate, SKPaymentTransactionObserver>
+@interface RKAViewController () <SKProductsRequestDelegate, SKPaymentTransactionObserver, UIAlertViewDelegate>
 
 @end
 
@@ -30,6 +30,7 @@
     [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
     
     [self productsRequest];
+    [self verifyReceipt];
 }
 
 - (void)didReceiveMemoryWarning
@@ -49,7 +50,12 @@
 
 - (IBAction)refresh:(id)sender
 {
+    //Properties can be set for testing
+    // see SKReceiptRefreshRequest.h for a list
+    
+    //SKReceiptRefreshRequest is a subclass of SKRequest
     SKReceiptRefreshRequest *refesh = [[SKReceiptRefreshRequest alloc] initWithReceiptProperties:nil];
+    refesh.delegate = self;
     [refesh start];
 }
 
@@ -102,6 +108,16 @@
                               delegate:nil
                      cancelButtonTitle:@"OK"
                      otherButtonTitles:nil] show];
+}
+
+- (void)requestDidFinish:(SKRequest *)request
+{
+    if([request isKindOfClass:[SKReceiptRefreshRequest class]])
+    {
+        NSLog(@"Successful Receipt Refresh Request...");
+        
+        [self verifyReceipt];
+    }
 }
 
 #pragma mark - SKPaymentTransactionObserver
@@ -185,12 +201,37 @@
 
 - (IBAction)getReceipt:(id)sender
 {
+    [self verifyReceipt];
+}
+
+- (void)verifyReceipt
+{
     NSURL *receiptURL = [[NSBundle mainBundle] appStoreReceiptURL];
     
-    if(receiptURL)
+    if([[NSFileManager defaultManager] fileExistsAtPath:receiptURL.path])
     {
         self.statusLabel.text = @"Receipt found…";
         
+        [[[UIAlertView alloc] initWithTitle:@"Receipt Found"
+                                   message:@"Would you like to verify the receipt?"
+                                  delegate:self
+                         cancelButtonTitle:@"No"
+                          otherButtonTitles:@"Yes", nil] show];
+
+    }
+    else
+    {
+        self.statusLabel.text = @"Receipt missing…";
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex == 1)
+    {
+        NSLog(@"Verify");
+        
+        NSURL *receiptURL = [[NSBundle mainBundle] appStoreReceiptURL];
         NSData *cert = [NSData dataWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"apple-cert" withExtension:nil]];
         NSData *receipt = [NSData dataWithContentsOfURL:receiptURL];
         RTKReceiptParser *parser = [[RTKReceiptParser alloc] initWithReceipt:receipt certificate:cert];
@@ -206,7 +247,7 @@
     }
     else
     {
-        self.statusLabel.text = @"Receipt missing…";
+        NSLog(@"**DO NOT** verify");
     }
 }
 
