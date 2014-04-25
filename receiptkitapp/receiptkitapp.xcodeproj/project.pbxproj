@@ -57,7 +57,7 @@
 		E8D7412B18366EEF00410036 /* receiptkitappTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "receiptkitappTests-Info.plist"; sourceTree = "<group>"; };
 		E8D7412D18366EEF00410036 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E8D7412F18366EEF00410036 /* receiptkitappTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = receiptkitappTests.m; sourceTree = "<group>"; };
-		E8D741391836715D00410036 /* libreceiptkit.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libreceiptkit.a; path = "../build/Debug-iphoneos/libreceiptkit.a"; sourceTree = "<group>"; };
+		E8D741391836715D00410036 /* libreceiptkit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libreceiptkit.a; path = "../build/Debug-iphoneos/libreceiptkit.a"; sourceTree = "<group>"; };
 		E8D7413B1836904100410036 /* apple-cert */ = {isa = PBXFileReference; lastKnownFileType = file; path = "apple-cert"; sourceTree = "<group>"; };
 		E8D7413C183691FB00410036 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = "../open-ssl/lib/libcrypto.a"; sourceTree = "<group>"; };
 		E8D7413D183691FB00410036 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = "../open-ssl/lib/libssl.a"; sourceTree = "<group>"; };
@@ -212,7 +212,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = RKA;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Empirical Magic Ltd.";
 				TargetAttributes = {
 					E8D7412118366EEF00410036 = {
@@ -322,7 +322,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -353,6 +352,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "B70744EF-63C3-4A1C-9D8D-126FB807E030";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -361,7 +361,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -385,6 +384,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PROVISIONING_PROFILE = "B70744EF-63C3-4A1C-9D8D-126FB807E030";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -431,7 +431,6 @@
 		E8D7413718366EEF00410036 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/receiptkitapp.app/receiptkitapp";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -454,7 +453,6 @@
 		E8D7413818366EEF00410036 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/receiptkitapp.app/receiptkitapp";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -489,6 +487,7 @@
 				E8D7413518366EEF00410036 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E8D7413618366EEF00410036 /* Build configuration list for PBXNativeTarget "receiptkitappTests" */ = {
 			isa = XCConfigurationList;
@@ -497,6 +496,7 @@
 				E8D7413818366EEF00410036 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
