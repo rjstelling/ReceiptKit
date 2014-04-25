@@ -78,12 +78,22 @@
         if(result == V_ASN1_CONSTRUCTED)
         {
             //NSLog(@"Created an ASN.1 structure");
-            [decodedObjects addObject:[self decodeConstructObject:type data:asn1ObjectData]];
+            id constructObject = [self decodeConstructObject:type data:asn1ObjectData];
+            
+            if(constructObject)
+                [decodedObjects addObject:constructObject];
+            else
+                NSLog(@"object was nil, unsupported!");
         }
         else if(result == V_ASN1_UNIVERSAL)
         {
             //NSLog(@"Data is a specific type (int, bool et. al.)");
-            [decodedObjects addObject:[self decodeUniversalObject:type data:asn1ObjectData]];
+            id universalObject = [self decodeUniversalObject:type data:asn1ObjectData];
+            
+            if(universalObject)
+                [decodedObjects addObject:universalObject];
+            else
+                NSLog(@"object was nil, unsupported!");
         }
         else if(result == V_ASN1_CONTEXT_SPECIFIC || xclass == V_ASN1_CONTEXT_SPECIFIC)
         {
@@ -123,7 +133,7 @@
             break;
             
         default:
-            
+            NSLog(@"Object of type: %d is not supported", objectType);
             break;
     }
     
@@ -164,6 +174,8 @@
         }
             break;
             
+        //case V_ASN1_PRINTABLESTRING:
+            //Same as UTF8 STRING?
         case V_ASN1_UTF8STRING:
         {
             returnObject = [[NSString alloc] initWithData:universalObjectData
@@ -178,8 +190,12 @@
         }
             break;
             
+        case V_ASN1_UNDEF:
+            NSLog(@"Undefined!");
+
         default:
             //Currently we don't support this type
+            NSLog(@"Object of type: %d is not supported", objectType);
             break;
     }
     
