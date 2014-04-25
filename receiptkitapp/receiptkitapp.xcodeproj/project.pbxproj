@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E8A97D45190AA2FE00D721D4 /* RKAReceiptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8A97D44190AA2FE00D721D4 /* RKAReceiptViewController.m */; };
+		E8A97D48190ABB9800D721D4 /* RKATableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E8A97D47190ABB9800D721D4 /* RKATableViewCell.m */; };
+		E8A97D4B190AC31100D721D4 /* RKAIAPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8A97D4A190AC31100D721D4 /* RKAIAPViewController.m */; };
 		E8D7410518366EEF00410036 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8D7410418366EEF00410036 /* Foundation.framework */; };
 		E8D7410718366EEF00410036 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8D7410618366EEF00410036 /* CoreGraphics.framework */; };
 		E8D7410918366EEF00410036 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8D7410818366EEF00410036 /* UIKit.framework */; };
@@ -38,6 +41,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E8A97D43190AA2FE00D721D4 /* RKAReceiptViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKAReceiptViewController.h; sourceTree = "<group>"; };
+		E8A97D44190AA2FE00D721D4 /* RKAReceiptViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKAReceiptViewController.m; sourceTree = "<group>"; };
+		E8A97D46190ABB9800D721D4 /* RKATableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKATableViewCell.h; sourceTree = "<group>"; };
+		E8A97D47190ABB9800D721D4 /* RKATableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKATableViewCell.m; sourceTree = "<group>"; };
+		E8A97D49190AC31100D721D4 /* RKAIAPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKAIAPViewController.h; sourceTree = "<group>"; };
+		E8A97D4A190AC31100D721D4 /* RKAIAPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKAIAPViewController.m; sourceTree = "<group>"; };
 		E8D7410118366EEF00410036 /* receiptkitapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = receiptkitapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8D7410418366EEF00410036 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E8D7410618366EEF00410036 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -131,8 +140,14 @@
 				E8D7411618366EEF00410036 /* Main.storyboard */,
 				E8D7411918366EEF00410036 /* RKAViewController.h */,
 				E8D7411A18366EEF00410036 /* RKAViewController.m */,
+				E8A97D43190AA2FE00D721D4 /* RKAReceiptViewController.h */,
+				E8A97D44190AA2FE00D721D4 /* RKAReceiptViewController.m */,
+				E8A97D46190ABB9800D721D4 /* RKATableViewCell.h */,
+				E8A97D47190ABB9800D721D4 /* RKATableViewCell.m */,
 				E8D7411C18366EEF00410036 /* Images.xcassets */,
 				E8D7410B18366EEF00410036 /* Supporting Files */,
+				E8A97D49190AC31100D721D4 /* RKAIAPViewController.h */,
+				E8A97D4A190AC31100D721D4 /* RKAIAPViewController.m */,
 			);
 			path = receiptkitapp;
 			sourceTree = "<group>";
@@ -268,7 +283,10 @@
 			files = (
 				E8D7411118366EEF00410036 /* main.m in Sources */,
 				E8D7411B18366EEF00410036 /* RKAViewController.m in Sources */,
+				E8A97D45190AA2FE00D721D4 /* RKAReceiptViewController.m in Sources */,
 				E8D7411518366EEF00410036 /* RKAAppDelegate.m in Sources */,
+				E8A97D4B190AC31100D721D4 /* RKAIAPViewController.m in Sources */,
+				E8A97D48190ABB9800D721D4 /* RKATableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,15 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class RTKReceiptParser;
+
 @interface RKAViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UILabel *nonConsumableTitle;
-@property (weak, nonatomic) IBOutlet UILabel *nonConsumableDesc;
-@property (weak, nonatomic) IBOutlet UIButton *nonConsumableBuy;
-@property (weak, nonatomic) IBOutlet UILabel *consumableTitle;
-@property (weak, nonatomic) IBOutlet UILabel *consumableDesc;
-@property (weak, nonatomic) IBOutlet UIButton *consumableBuy;
-
-@property (weak, nonatomic) IBOutlet UILabel *statusLabel;
+@property (strong, nonatomic) RTKReceiptParser *receiptParser;
 
 @end

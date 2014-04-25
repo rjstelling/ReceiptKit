@@ -37,7 +37,7 @@
 {
     NSString *desc = [NSString stringWithFormat:@"<%@: %@ (%@), %lu In App Purchases: %@>",
                       self.bundleIdentifier, self.bundleVersion, self.originalVersion,
-                      (unsigned long)[self.inAppPurchases count], self.inAppPurchases];
+                      (unsigned long)[self.inAppPurchases count], self.inAppPurchases.count>0?self.inAppPurchases:@"<empty>"];
     
     return desc;
 }

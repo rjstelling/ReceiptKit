@@ -15,6 +15,19 @@
 
 @interface RKAViewController () <SKProductsRequestDelegate, SKPaymentTransactionObserver, UIAlertViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UILabel *nonConsumableTitle;
+@property (weak, nonatomic) IBOutlet UILabel *nonConsumableDesc;
+@property (weak, nonatomic) IBOutlet UIButton *nonConsumableBuy;
+@property (weak, nonatomic) IBOutlet UILabel *consumableTitle;
+@property (weak, nonatomic) IBOutlet UILabel *consumableDesc;
+@property (weak, nonatomic) IBOutlet UIButton *consumableBuy;
+
+@property (weak, nonatomic) IBOutlet UILabel *statusLabel;
+
+@property (weak, nonatomic) IBOutlet UIButton *viewReceipt;
+@property (weak, nonatomic) IBOutlet UIButton *refreshReceipt;
+@property (weak, nonatomic) IBOutlet UIButton *checkReceipt;
+
 @end
 
 @implementation RKAViewController
@@ -47,18 +60,6 @@
     
     [request start];
 }
-
-- (IBAction)refresh:(id)sender
-{
-    //Properties can be set for testing
-    // see SKReceiptRefreshRequest.h for a list
-    
-    //SKReceiptRefreshRequest is a subclass of SKRequest
-    SKReceiptRefreshRequest *refesh = [[SKReceiptRefreshRequest alloc] initWithReceiptProperties:nil];
-    refesh.delegate = self;
-    [refesh start];
-}
-
 
 #pragma mark - SKProductsRequestDelegate
 
@@ -164,26 +165,13 @@
 //// Sent when the download state has changed.
 //- (void)paymentQueue:(SKPaymentQueue *)queue updatedDownloads:(NSArray *)downloads __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_6_0);
 
-#pragma mark - Purchase Actions
-
-- (IBAction)buyNonConsumable:(id)sender
-{
-    NSLog(@"%s", __PRETTY_FUNCTION__);
-    [self buyProduct:_nonConsumableProduct];
-}
-
-- (IBAction)buyConsumable:(id)sender
-{
-    NSLog(@"%s", __PRETTY_FUNCTION__);
-    [self buyProduct:_consumableProduct];
-}
 
 - (void)buyProduct:(SKProduct *)basket
 {
     if([SKPaymentQueue canMakePayments])
     {
         SKMutablePayment *payment = [SKMutablePayment paymentWithProduct:basket];
-        payment.quantity = 1;
+        payment.quantity = 8;
         [[SKPaymentQueue defaultQueue] addPayment:payment];
     }
     else
@@ -197,12 +185,7 @@
     [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
 }
 
-#pragma mark - Receipt Actions
-
-- (IBAction)getReceipt:(id)sender
-{
-    [self verifyReceipt];
-}
+#pragma mark - Receipt Helpers
 
 - (void)verifyReceipt
 {
@@ -210,20 +193,62 @@
     
     if([[NSFileManager defaultManager] fileExistsAtPath:receiptURL.path])
     {
-        self.statusLabel.text = @"Receipt found…";
-        
-        [[[UIAlertView alloc] initWithTitle:@"Receipt Found"
-                                   message:@"Would you like to verify the receipt?"
-                                  delegate:self
-                         cancelButtonTitle:@"No"
-                          otherButtonTitles:@"Yes", nil] show];
-
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.statusLabel.text = @"Receipt found…";
+            
+            
+            [[[UIAlertView alloc] initWithTitle:@"Receipt Found"
+                                        message:@"Would you like to verify the receipt?"
+                                       delegate:self
+                              cancelButtonTitle:@"No"
+                              otherButtonTitles:@"Yes", nil] show];
+        });
     }
     else
     {
-        self.statusLabel.text = @"Receipt missing…";
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.statusLabel.text = @"Receipt missing…";
+            self.viewReceipt.enabled = NO;
+        });
     }
 }
+
+#pragma mark - Actions
+
+- (IBAction)buyNonConsumable:(id)sender
+{
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    [self buyProduct:_nonConsumableProduct];
+}
+
+- (IBAction)buyConsumable:(id)sender
+{
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    [self buyProduct:_consumableProduct];
+}
+
+- (IBAction)getReceipt:(id)sender
+{
+    [self verifyReceipt];
+}
+
+- (IBAction)refresh:(id)sender
+{
+    //Properties can be set for testing
+    // see SKReceiptRefreshRequest.h for a list
+    
+    //SKReceiptRefreshRequest is a subclass of SKRequest
+    SKReceiptRefreshRequest *refesh = [[SKReceiptRefreshRequest alloc] initWithReceiptProperties:nil];
+    refesh.delegate = self;
+    [refesh start];
+}
+
+- (IBAction)onViewReceipt:(id)sender
+{
+    [self performSegueWithIdentifier:@"viewreceipt" sender:self];
+}
+
+#pragma mark - AlertView Delegate
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
@@ -234,15 +259,21 @@
         NSURL *receiptURL = [[NSBundle mainBundle] appStoreReceiptURL];
         NSData *cert = [NSData dataWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"apple-cert" withExtension:nil]];
         NSData *receipt = [NSData dataWithContentsOfURL:receiptURL];
-        RTKReceiptParser *parser = [[RTKReceiptParser alloc] initWithReceipt:receipt certificate:cert];
+        self.receiptParser = [[RTKReceiptParser alloc] initWithReceipt:receipt certificate:cert];
         
-        if([parser isReceiptValidForDevice:@"com.demo.receiptkit"])
+        if([self.receiptParser isReceiptValidForDevice:@"com.demo.receiptkit"])
         {
-            self.statusLabel.text = @"Receipt valid!";
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.statusLabel.text = @"Receipt valid!";
+                self.viewReceipt.enabled = YES;
+            });
         }
         else
         {
-            self.statusLabel.text = @"Receipt invalid :(";
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.statusLabel.text = @"Receipt invalid :(";
+                self.viewReceipt.enabled = NO;
+            });
         }
     }
     else
