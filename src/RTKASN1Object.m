@@ -43,6 +43,7 @@
     return self;
 }
 
+// @return : an array of decoded receipts objetcs or a single decoded receipt object
 + (id)decodeASN1Data:(NSData *)data
 {
     const uint8_t *locationInData = data.bytes;
@@ -102,10 +103,22 @@
             
             break;
         }
+        else if(result == ASN1_R_UNKNOWN_FORMAT)
+        {
+            //The Opaque Value (https://developer.apple.com/library/ios/releasenotes/General/ValidateAppStoreReceipt/Chapters/ReceiptFields.html)
+            //is just a stream of bytes, ASN1_get_object returns an unknown error
+            //so if we don't copy the bytes we end up with a sequence with an empty array
+            //as the payload.
+            //
+            //length will also contation a garbage value
+            [decodedObjects addObject:[data copy]];
+            
+            break;
+        }
         else
         {
             //Unsure what to do here
-            //NSLog(@"This is odd... %d", result);
+            NSLog(@"This is odd... %d", result);
         }
         
         //Advance to next object, ASN1_get_object has already increased
