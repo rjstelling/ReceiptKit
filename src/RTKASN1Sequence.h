@@ -17,3 +17,10 @@
 - (id)objectAtIndexedSubscript:(NSUInteger)idx;
 
 @end
+
+@interface RTKASN1Sequence (ReceiptKit)
+
+//Naive access
+- (NSInteger)objectTypeID;
+
+@end

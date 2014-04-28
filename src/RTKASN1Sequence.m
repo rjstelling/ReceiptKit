@@ -48,3 +48,14 @@
 }
 
 @end
+
+@implementation RTKASN1Sequence (ReceiptKit)
+
+#pragma mark - Naive access
+
+- (NSInteger)objectTypeID
+{
+    return [_seqArray[0] integerValue];
+}
+
+@end
