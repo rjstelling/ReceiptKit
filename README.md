@@ -43,7 +43,17 @@ Let me know any issues or questions; richard@empiricalmagic.com or @rjstelling
 
 **WARNING**: You _must_ compile your own versions of libssl and libcrypto. 
 
-Known Issues
-============
+##Known Issues
 
 - Will not run under 64-bit Simulator in Xcode 5. Missing OpenSSL symbols. 
+
+##
+
+###Creating Test Users
+
+![iTunes Connect Dashboard](/docs/itunes-dash.png)
+
+
+Creating In App Purchases
+
+
