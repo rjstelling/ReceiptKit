@@ -118,6 +118,7 @@
 
 - (BOOL)isReceiptValidForDevice:(NSString *)bundleIdentifier
 {
+    NSParameterAssert(bundleIdentifier);
     NSAssert(_receiptData, @"Missing receipt data.");
     NSAssert(_certificateData, @"Missing cert. data.");
     
@@ -141,7 +142,7 @@
         [bundleIDData appendBytes:[bundleIdentifier UTF8String] length:bundleIdentifier.length];
         
         [data appendBytes:uuidBytes length:sizeof(uuid_t)];
-#error opaque value is array not data
+//#error opaque value is array not data
         [data appendBytes:self.purchaseInfo.opaqueValue.bytes length:self.purchaseInfo.opaqueValue.length];
         [data appendData:bundleIDData];
         
