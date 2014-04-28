@@ -50,7 +50,7 @@
     self.bundleID.text = parser.purchaseInfo.bundleIdentifier;
     self.bundleVersion.text = parser.purchaseInfo.bundleVersion;
     self.originalVersion.text = parser.purchaseInfo.originalVersion;
-    self.iapCount.text = [NSString stringWithFormat:@"%d", parser.purchaseInfo.inAppPurchases.count];
+    self.iapCount.text = [NSString stringWithFormat:@"%lu", (unsigned long)parser.purchaseInfo.inAppPurchases.count];
     
     self.inAppPurchases = [parser.purchaseInfo.inAppPurchases allObjects];
 }
