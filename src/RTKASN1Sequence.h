@@ -22,5 +22,7 @@
 
 //Naive access
 - (NSInteger)objectTypeID;
+- (NSInteger)objectVersion;
+- (id)objectValue;
 
 @end

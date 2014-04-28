@@ -7,6 +7,7 @@
 //
 
 #import "RTKASN1Sequence.h"
+#import "RTKASN1OctetString.h"
 
 @implementation RTKASN1Sequence
 {
@@ -56,6 +57,16 @@
 - (NSInteger)objectTypeID
 {
     return [_seqArray[0] integerValue];
+}
+
+- (NSInteger)objectVersion
+{
+    return [_seqArray[1] integerValue];
+}
+
+- (id)objectValue
+{
+    return ((RTKASN1OctetString *)_seqArray[2]).data;
 }
 
 @end

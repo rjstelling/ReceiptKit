@@ -47,44 +47,41 @@
 - (void)extractProperties:(RTKASN1Set *)decodedPayload
 {
     for(RTKASN1Sequence *seq in (RTKASN1Set *)decodedPayload)
-    {
-        NSInteger typeID = [seq[0] integerValue];
-        
-        switch(typeID)
+    {        
+        switch([seq objectTypeID])
         {
             case RTKBundleID:
-                _bundleIdentifier = ((RTKASN1OctetString *)seq[2]).data;
+                _bundleIdentifier = [seq objectValue];
                 NSAssert([_bundleIdentifier isKindOfClass:[NSString class]], @"_bundleIdentifier is not of type NSString");
                 break;
-
+                
             case RTKVersion:
-                _bundleVersion = ((RTKASN1OctetString *)seq[2]).data;
+                _bundleVersion = [seq objectValue];
                 NSAssert([_bundleVersion isKindOfClass:[NSString class]], @"_bundleVersion is not of type NSString");
                 break;
                 
             case RTKOriginalVersion:
-                _originalVersion = ((RTKASN1OctetString *)seq[2]).data;
+                _originalVersion = [seq objectValue];
                 NSAssert([_originalVersion isKindOfClass:[NSString class]], @"_originalVersion is not of type NSString");
                 break;
                 
             case RTKOpaqueValue:
-                _opaqueValue = ((RTKASN1OctetString *)seq[2]).data;
+                _opaqueValue = [seq objectValue];
                 NSAssert([_opaqueValue isKindOfClass:[NSData class]], @"_opaqueValue is not of type NSData");
                 break;
                 
             case RTKHash:
-                _hash = ((RTKASN1OctetString *)seq[2]).data;
+                _hash = [seq objectValue];
                 NSAssert([_hash isKindOfClass:[NSData class]], @"_hash is not of type NSData");
                 break;
-            
+                
             case RTKExpiryDate:
-                _expiryDate = [NSDate dateFromReceiptDateString:((RTKASN1OctetString *)seq[2]).data];
-                //NSAssert([_expiryDate isKindOfClass:[RTKASN1OctetString class]], @"_expiryDate is not of type RTKASN1OctetString");
+                _expiryDate = [NSDate dateFromReceiptDateString:[seq objectValue]];
                 break;
                 
             case RTKInAppPurchase:
             {
-                RTKInAppPurchaseInformation *iap = [[RTKInAppPurchaseInformation alloc] initWithASN1Object:((RTKASN1OctetString *)seq[2]).data];
+                RTKInAppPurchaseInformation *iap = [[RTKInAppPurchaseInformation alloc] initWithASN1Object:[seq objectValue]];
                 
                 if(_inAppPurchases)
                 {
