@@ -76,7 +76,15 @@
         
         NSData *asn1ObjectData = [NSData dataWithBytesNoCopy:(void *)locationInData length:length freeWhenDone:NO];
         
-        if(result == V_ASN1_CONSTRUCTED)
+        if(result == V_ASN1_UNIVERSAL && xclass == V_ASN1_PRIVATE)
+        {
+            //What is xclass???
+            
+            [decodedObjects addObject:[data copy]];
+            
+            break;
+        }
+        else if(result == V_ASN1_CONSTRUCTED)
         {
             //NSLog(@"Created an ASN.1 structure");
             id constructObject = [self decodeConstructObject:type data:asn1ObjectData];
