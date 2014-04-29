@@ -14,6 +14,8 @@
 
 #define RKANonConsumable @"nonconsumable01"
 #define RKAConsumable @"consumable01"
+#define RKAAutoSub1Month @"autosub1month"
+#define RKAAutoSub1Year @"autosub1year"
 
 @interface RKAViewController () <SKProductsRequestDelegate, SKPaymentTransactionObserver, UIAlertViewDelegate>
 
@@ -23,6 +25,15 @@
 @property (weak, nonatomic) IBOutlet UILabel *consumableTitle;
 @property (weak, nonatomic) IBOutlet UILabel *consumableDesc;
 @property (weak, nonatomic) IBOutlet UIButton *consumableBuy;
+
+
+@property (weak, nonatomic) IBOutlet UILabel *sub1Title;
+@property (weak, nonatomic) IBOutlet UILabel *sub1Desc;
+@property (weak, nonatomic) IBOutlet UIButton *sub1Buy;
+
+@property (weak, nonatomic) IBOutlet UILabel *sub2Title;
+@property (weak, nonatomic) IBOutlet UILabel *sub2Desc;
+@property (weak, nonatomic) IBOutlet UIButton *sub2Buy;
 
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
 
@@ -36,6 +47,8 @@
 {
     SKProduct *_nonConsumableProduct;
     SKProduct *_consumableProduct;
+    SKProduct *_autoSub1Month;
+    SKProduct *_autoSub1Year;
 }
 
 - (void)viewDidLoad
@@ -56,7 +69,7 @@
 
 - (void)productsRequest
 {
-    NSSet *prods = [NSSet setWithArray:@[RKANonConsumable, RKAConsumable]];
+    NSSet *prods = [NSSet setWithArray:@[ RKANonConsumable, RKAConsumable, RKAAutoSub1Month, RKAAutoSub1Year ]];
     SKProductsRequest *request = [[SKProductsRequest alloc] initWithProductIdentifiers:prods];
     request.delegate = self;
     
@@ -100,6 +113,38 @@
                                    forState:UIControlStateNormal];
             
             self.consumableBuy.enabled = YES;
+        }
+        else if([product.productIdentifier isEqualToString:RKAAutoSub1Month])
+        {
+            _autoSub1Month = product;
+            
+            self.sub1Title.text = product.localizedTitle;
+            self.sub1Desc.text = product.localizedDescription;
+            
+            NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+            [formatter setLocale:product.priceLocale];
+            [formatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+            
+            [self.sub1Buy setTitle:[formatter stringFromNumber:product.price]
+                                forState:UIControlStateNormal];
+            
+            self.sub1Buy.enabled = YES;
+        }
+        else if([product.productIdentifier isEqualToString:RKAAutoSub1Year])
+        {
+            _autoSub1Year = product;
+            
+            self.sub2Title.text = product.localizedTitle;
+            self.sub2Desc.text = product.localizedDescription;
+            
+            NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+            [formatter setLocale:product.priceLocale];
+            [formatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+            
+            [self.sub2Buy setTitle:[formatter stringFromNumber:product.price]
+                          forState:UIControlStateNormal];
+            
+            self.sub2Buy.enabled = YES;
         }
     }
 }
@@ -173,7 +218,7 @@
     if([SKPaymentQueue canMakePayments])
     {
         SKMutablePayment *payment = [SKMutablePayment paymentWithProduct:basket];
-        payment.quantity = 8;
+        payment.quantity = 1;
         [[SKPaymentQueue defaultQueue] addPayment:payment];
     }
     else
@@ -227,6 +272,17 @@
 {
     NSLog(@"%s", __PRETTY_FUNCTION__);
     [self buyProduct:_consumableProduct];
+}
+- (IBAction)buySub1:(id)sender
+{
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    [self buyProduct:_autoSub1Month];
+}
+
+- (IBAction)buySub2:(id)sender
+{
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    [self buyProduct:_autoSub1Year];
 }
 
 - (IBAction)getReceipt:(id)sender
