@@ -1,0 +1,3 @@
+[submodule "InterAppCommunication"]
+	path = InterAppCommunication
+	url = https://github.com/tapsandswipes/InterAppCommunication
