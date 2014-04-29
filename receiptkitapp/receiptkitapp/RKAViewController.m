@@ -9,6 +9,7 @@
 @import StoreKit;
 #import "RKAViewController.h"
 #import "RTKReceiptParser.h"
+#import "IACClient.h"
 
 #define RKANonConsumable @"nonconsumable01"
 #define RKAConsumable @"consumable01"
@@ -246,6 +247,24 @@
 - (IBAction)onViewReceipt:(id)sender
 {
     [self performSegueWithIdentifier:@"viewreceipt" sender:self];
+}
+
+- (IBAction)onOpenWIthReceiptSpy:(id)sender
+{
+    IACClient *client = [IACClient clientWithURLScheme:@"receiptspy"];
+    
+    NSURL *receiptURL = [[NSBundle mainBundle] appStoreReceiptURL];
+    NSData *receiptData = [NSData dataWithContentsOfURL:receiptURL];
+    
+    NSString *receiptBase64Data = [receiptData base64EncodedStringWithOptions:0];
+    NSString *bundleID = @"com.demo.receiptkit";
+    
+    [client performAction:@"process-receipt" parameters:@{@"receipt_data" : receiptBase64Data,
+                                                @"bundle_id": bundleID}];
+    
+//    NSURL *url = [NSURL URLWithString:@"receiptspy://x-callback-url"];
+//    
+//    [[UIApplication sharedApplication] openURL:url];
 }
 
 #pragma mark - AlertView Delegate

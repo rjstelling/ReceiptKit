@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E87E0CA7190FA1C800F7480B /* IACClient.m in Sources */ = {isa = PBXBuildFile; fileRef = E87E0C9F190FA1C800F7480B /* IACClient.m */; };
+		E87E0CA8190FA1C800F7480B /* IACManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E87E0CA2190FA1C800F7480B /* IACManager.m */; };
+		E87E0CA9190FA1C800F7480B /* IACRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = E87E0CA4190FA1C800F7480B /* IACRequest.m */; };
+		E87E0CAA190FA1C800F7480B /* NSString+IACExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = E87E0CA6190FA1C800F7480B /* NSString+IACExtensions.m */; };
 		E8A97D45190AA2FE00D721D4 /* RKAReceiptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8A97D44190AA2FE00D721D4 /* RKAReceiptViewController.m */; };
 		E8A97D48190ABB9800D721D4 /* RKATableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E8A97D47190ABB9800D721D4 /* RKATableViewCell.m */; };
 		E8A97D4B190AC31100D721D4 /* RKAIAPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8A97D4A190AC31100D721D4 /* RKAIAPViewController.m */; };
@@ -41,6 +45,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E87E0C9E190FA1C800F7480B /* IACClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IACClient.h; sourceTree = "<group>"; };
+		E87E0C9F190FA1C800F7480B /* IACClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IACClient.m; sourceTree = "<group>"; };
+		E87E0CA0190FA1C800F7480B /* IACDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IACDelegate.h; sourceTree = "<group>"; };
+		E87E0CA1190FA1C800F7480B /* IACManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IACManager.h; sourceTree = "<group>"; };
+		E87E0CA2190FA1C800F7480B /* IACManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IACManager.m; sourceTree = "<group>"; };
+		E87E0CA3190FA1C800F7480B /* IACRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IACRequest.h; sourceTree = "<group>"; };
+		E87E0CA4190FA1C800F7480B /* IACRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IACRequest.m; sourceTree = "<group>"; };
+		E87E0CA5190FA1C800F7480B /* NSString+IACExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+IACExtensions.h"; sourceTree = "<group>"; };
+		E87E0CA6190FA1C800F7480B /* NSString+IACExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+IACExtensions.m"; sourceTree = "<group>"; };
 		E8A97D43190AA2FE00D721D4 /* RKAReceiptViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKAReceiptViewController.h; sourceTree = "<group>"; };
 		E8A97D44190AA2FE00D721D4 /* RKAReceiptViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKAReceiptViewController.m; sourceTree = "<group>"; };
 		E8A97D46190ABB9800D721D4 /* RKATableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKATableViewCell.h; sourceTree = "<group>"; };
@@ -99,6 +112,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E87E0C9D190FA1C800F7480B /* InterAppCommunication */ = {
+			isa = PBXGroup;
+			children = (
+				E87E0C9E190FA1C800F7480B /* IACClient.h */,
+				E87E0C9F190FA1C800F7480B /* IACClient.m */,
+				E87E0CA0190FA1C800F7480B /* IACDelegate.h */,
+				E87E0CA1190FA1C800F7480B /* IACManager.h */,
+				E87E0CA2190FA1C800F7480B /* IACManager.m */,
+				E87E0CA3190FA1C800F7480B /* IACRequest.h */,
+				E87E0CA4190FA1C800F7480B /* IACRequest.m */,
+				E87E0CA5190FA1C800F7480B /* NSString+IACExtensions.h */,
+				E87E0CA6190FA1C800F7480B /* NSString+IACExtensions.m */,
+			);
+			name = InterAppCommunication;
+			path = ../../InterAppCommunication/InterAppCommunication;
+			sourceTree = "<group>";
+		};
 		E8D740F818366EEF00410036 = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +175,7 @@
 				E8A97D46190ABB9800D721D4 /* RKATableViewCell.h */,
 				E8A97D47190ABB9800D721D4 /* RKATableViewCell.m */,
 				E8D7411C18366EEF00410036 /* Images.xcassets */,
+				E87E0C9D190FA1C800F7480B /* InterAppCommunication */,
 				E8D7410B18366EEF00410036 /* Supporting Files */,
 				E8A97D49190AC31100D721D4 /* RKAIAPViewController.h */,
 				E8A97D4A190AC31100D721D4 /* RKAIAPViewController.m */,
@@ -281,12 +312,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E87E0CA9190FA1C800F7480B /* IACRequest.m in Sources */,
 				E8D7411118366EEF00410036 /* main.m in Sources */,
 				E8D7411B18366EEF00410036 /* RKAViewController.m in Sources */,
+				E87E0CAA190FA1C800F7480B /* NSString+IACExtensions.m in Sources */,
 				E8A97D45190AA2FE00D721D4 /* RKAReceiptViewController.m in Sources */,
 				E8D7411518366EEF00410036 /* RKAAppDelegate.m in Sources */,
 				E8A97D4B190AC31100D721D4 /* RKAIAPViewController.m in Sources */,
+				E87E0CA7190FA1C800F7480B /* IACClient.m in Sources */,
 				E8A97D48190ABB9800D721D4 /* RKATableViewCell.m in Sources */,
+				E87E0CA8190FA1C800F7480B /* IACManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
