@@ -77,4 +77,13 @@ NSString *const RTKDataCryptoErrorDomain = @"com.empiricalmagic.nsdata+crypto.er
     return sha1Data;
 }
 
++ (NSData *)vendorIdentifier:(NSUUID *)vendorUUID
+{
+    uuid_t uuidBytes;
+    [vendorUUID getUUIDBytes:uuidBytes];
+    NSData *vendorID = [NSData dataWithBytes:uuidBytes length:sizeof(uuidBytes)];
+    
+    return vendorID;
+}
+
 @end

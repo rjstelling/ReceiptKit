@@ -161,11 +161,8 @@
     NSAssert(_certificateData, @"Missing cert. data.");
     
     BOOL success = NO;
-    
-    NSUUID *uuid = [[UIDevice currentDevice] identifierForVendor];
-    uuid_t uuidBytes;
-    [uuid getUUIDBytes:uuidBytes];
-    NSData *vendorID = [NSData dataWithBytes:uuidBytes length:sizeof(uuidBytes)];
+
+    NSData *vendorID = [NSData vendorIdentifier:[[UIDevice currentDevice] identifierForVendor]];
     
     success = [self isReceiptValidForVendorIdentifier:vendorID bundleIdentifier:bundleIdentifier];
     

@@ -17,4 +17,6 @@ extern NSString *const RTKDataCryptoErrorDomain;
 
 - (NSData *)sha1Value;
 
++ (NSData *)vendorIdentifier:(NSUUID *)vendorUUID;
+
 @end
