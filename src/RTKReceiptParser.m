@@ -167,7 +167,7 @@
     [uuid getUUIDBytes:uuidBytes];
     NSData *vendorID = [NSData dataWithBytes:uuidBytes length:sizeof(uuidBytes)];
     
-    [self isReceiptValidForVendorIdentifier:vendorID bundleIdentifier:bundleIdentifier];
+    success = [self isReceiptValidForVendorIdentifier:vendorID bundleIdentifier:bundleIdentifier];
     
     return success;
 }
