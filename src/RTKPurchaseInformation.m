@@ -12,6 +12,8 @@
 #import "RTKASN1OctetString.h"
 #import "NSDate+Receipt.h"
 
+#import <objc/runtime.h>
+
 @implementation RTKPurchaseInformation
 
 - (instancetype)initWithASN1Object:(RTKASN1Object *)asn1Object
@@ -99,6 +101,38 @@
                 break;
         }
     }
+}
+
+#pragma mark - Public API
+
+- (NSDictionary *)purchaseInformationDictionary
+{
+    id currentClass = [self class];
+    
+    NSString *propertyName = nil;
+    
+    unsigned int outCount, i;
+    objc_property_t *properties = class_copyPropertyList(currentClass, &outCount);
+    
+    NSMutableDictionary *info = [NSMutableDictionary dictionaryWithCapacity:outCount];
+
+    for(i = 0; i < outCount; i++)
+    {
+    	objc_property_t property = properties[i];
+    	propertyName = [NSString stringWithCString:property_getName(property) encoding:NSUTF8StringEncoding];
+    	
+        id obj = [self valueForKey:propertyName];
+        
+        if(obj)
+        {
+            if([obj isKindOfClass:[NSString class]] && [obj length] > 0)
+                [info setObject:[obj copy] forKey:propertyName];
+            else if(![obj isKindOfClass:[NSString class]])
+                [info setObject:obj forKey:propertyName];
+        }
+    }
+    
+    return info;
 }
 
 @end

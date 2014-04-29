@@ -57,4 +57,7 @@ typedef NS_ENUM(NSInteger, RTKReceiptID)
 
 - (instancetype)initWithASN1Object:(RTKASN1Object *)asn1Object;
 
+///Return a dictionary on all non-nil properties
+- (NSDictionary *)purchaseInformationDictionary;
+
 @end
