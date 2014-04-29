@@ -93,6 +93,7 @@
 		E80F868A17F995110011F9C8 /* RTKPurchaseInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTKPurchaseInformation.m; sourceTree = "<group>"; };
 		E80F868C17F9964E0011F9C8 /* RTKInAppPurchaseInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTKInAppPurchaseInformation.h; sourceTree = "<group>"; };
 		E80F868D17F9964E0011F9C8 /* RTKInAppPurchaseInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTKInAppPurchaseInformation.m; sourceTree = "<group>"; };
+		E87E0CAF190FC1E400F7480B /* ReceiptKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReceiptKit.h; sourceTree = "<group>"; };
 		E885285C17F4C31900A804E4 /* RTKASN1Object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTKASN1Object.h; sourceTree = "<group>"; };
 		E885285D17F4C31900A804E4 /* RTKASN1Object.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTKASN1Object.m; sourceTree = "<group>"; };
 		E89646CC17FB55B700E53D5E /* NSDate+Receipt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Receipt.h"; sourceTree = "<group>"; };
@@ -377,6 +378,7 @@
 		E8B631B117F486660060E6CB /* ReceiptKit */ = {
 			isa = PBXGroup;
 			children = (
+				E87E0CAF190FC1E400F7480B /* ReceiptKit.h */,
 				E8B6320A17F489AA0060E6CB /* RTKReceiptParser.h */,
 				E8B6320B17F489AA0060E6CB /* RTKReceiptParser.m */,
 				E80F868917F995110011F9C8 /* RTKPurchaseInformation.h */,
