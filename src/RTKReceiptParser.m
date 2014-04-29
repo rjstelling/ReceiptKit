@@ -116,24 +116,24 @@
 //    return NO;
 //}
 
-- (BOOL)isReceiptValidForDevice:(NSString *)bundleIdentifier
+- (BOOL)isReceiptValidForVendorIdentifier:(NSData *)vendorID bundleIdentifier:(NSString *)bundleIdentifier
 {
     NSParameterAssert(bundleIdentifier);
+    NSParameterAssert(vendorID);
     NSAssert(_receiptData, @"Missing receipt data.");
     NSAssert(_certificateData, @"Missing cert. data.");
     
     BOOL success = NO;
     
-    NSMutableData *data = [NSMutableData dataWithCapacity:48];
-    NSUUID *uuid = [[UIDevice currentDevice] identifierForVendor];
-    
     if(self.purchaseInfo)
     {
+        NSMutableData *data = [NSMutableData dataWithCapacity:48];
+        
         // Get Device Identifier as bytes
         //uuid + bundle id + opaque
         uuid_t uuidBytes;
-        [uuid getUUIDBytes:uuidBytes];
-
+        [vendorID getBytes:uuidBytes length:sizeof(uuidBytes)];
+        
         //The bundle id needs to be pre-pended with the UTF8 ASN.1 type (12) and
         //the length of the string
         char pre[2] = {12, bundleIdentifier.length};
@@ -142,14 +142,32 @@
         [bundleIDData appendBytes:[bundleIdentifier UTF8String] length:bundleIdentifier.length];
         
         [data appendBytes:uuidBytes length:sizeof(uuid_t)];
-//#error opaque value is array not data
+        //#error opaque value is array not data
         [data appendBytes:self.purchaseInfo.opaqueValue.bytes length:self.purchaseInfo.opaqueValue.length];
         [data appendData:bundleIDData];
         
         NSData *sha1 = [data sha1Value];
-    
+        
         success = [sha1 isEqualToData:self.purchaseInfo.hash];
     }
+    
+    return success;
+}
+
+- (BOOL)isReceiptValidForCurrentDevice:(NSString *)bundleIdentifier
+{
+    NSParameterAssert(bundleIdentifier);
+    NSAssert(_receiptData, @"Missing receipt data.");
+    NSAssert(_certificateData, @"Missing cert. data.");
+    
+    BOOL success = NO;
+    
+    NSUUID *uuid = [[UIDevice currentDevice] identifierForVendor];
+    uuid_t uuidBytes;
+    [uuid getUUIDBytes:uuidBytes];
+    NSData *vendorID = [NSData dataWithBytes:uuidBytes length:sizeof(uuidBytes)];
+    
+    [self isReceiptValidForVendorIdentifier:vendorID bundleIdentifier:bundleIdentifier];
     
     return success;
 }

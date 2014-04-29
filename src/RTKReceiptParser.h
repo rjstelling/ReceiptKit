@@ -19,6 +19,9 @@
 /// Do not read the values of `bundleIdentifier` or `bundleVersion` directly
 /// from the Info.plist, as it is too eay to alter. Instead, hard code the
 /// bundle identifier and version, preferably in an obfuscated way.
-- (BOOL)isReceiptValidForDevice:(NSString *)bundleIdentifier;
+- (BOOL)isReceiptValidForCurrentDevice:(NSString *)bundleIdentifier;
+
+///This is used to verify a receipt form an external app
+- (BOOL)isReceiptValidForVendorIdentifier:(NSData *)vendorID bundleIdentifier:(NSString *)bundleIdentifier;
 
 @end
