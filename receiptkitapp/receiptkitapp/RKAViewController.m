@@ -10,6 +10,7 @@
 #import "RKAViewController.h"
 #import "RTKReceiptParser.h"
 #import "IACClient.h"
+#import "NSData+Crypto.h"
 
 #define RKANonConsumable @"nonconsumable01"
 #define RKAConsumable @"consumable01"
@@ -259,12 +260,12 @@
     NSString *receiptBase64Data = [receiptData base64EncodedStringWithOptions:0];
     NSString *bundleID = @"com.demo.receiptkit";
     
-    [client performAction:@"process-receipt" parameters:@{@"receipt_data" : receiptBase64Data,
-                                                @"bundle_id": bundleID}];
+    NSData *vendorID = [NSData vendorIdentifier:[[UIDevice currentDevice] identifierForVendor]];
+    NSString *vendorBase64Data = [vendorID base64EncodedStringWithOptions:0];
     
-//    NSURL *url = [NSURL URLWithString:@"receiptspy://x-callback-url"];
-//    
-//    [[UIApplication sharedApplication] openURL:url];
+    [client performAction:@"process-receipt" parameters:@{@"receipt_data" : receiptBase64Data,
+                                                          @"vendor_id" : vendorBase64Data,
+                                                          @"bundle_id": bundleID}];
 }
 
 #pragma mark - AlertView Delegate
