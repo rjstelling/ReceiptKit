@@ -280,7 +280,7 @@
         NSData *receipt = [NSData dataWithContentsOfURL:receiptURL];
         self.receiptParser = [[RTKReceiptParser alloc] initWithReceipt:receipt certificate:cert];
         
-        if([self.receiptParser isReceiptValidForDevice:@"com.demo.receiptkit"])
+        if([self.receiptParser isReceiptValidForCurrentDevice:@"com.demo.receiptkit"])
         {
             dispatch_async(dispatch_get_main_queue(), ^{
                 self.statusLabel.text = @"Receipt valid!";
