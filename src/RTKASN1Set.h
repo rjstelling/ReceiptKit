@@ -1,19 +1,13 @@
 //
 //  RTKASN1Set.h
-//  ReceiptKit
+//  rtk-proto
 //
-//  Created by Richard Stelling on 26/09/2013.
-//  Copyright (c) 2013 Empirical Magic Ltd. All rights reserved.
+//  Created by Richard Stelling on 03/05/2014.
+//  Copyright (c) 2014 Richard Stelling. All rights reserved.
 //
 
-#error THIS IS LEGACY CODE DO NOT USE
+#import "RTKANS1ObjectContainer.h"
 
-#import <Foundation/Foundation.h>
-#import "RTKASN1Object.h"
-
-@interface RTKASN1Set : RTKASN1Object <NSFastEnumeration>
-
-//Access
-- (id)objectAtIndexedSubscript:(NSUInteger)idx;
+@interface RTKANS1Set : RTKANS1ObjectContainer 
 
 @end

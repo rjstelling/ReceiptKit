@@ -6,8 +6,6 @@
 //  Copyright (c) 2013 Empirical Magic Ltd. All rights reserved.
 //
 
-#error THIS IS LEGACY CODE DO NOT USE
-
 #import <Foundation/Foundation.h>
 
 extern NSString *const RTKDataCryptoErrorDomain;

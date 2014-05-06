@@ -1,226 +1,225 @@
 //
 //  RTKASN1Object.m
-//  ReceiptKit
+//  rtk-proto
 //
-//  Created by Richard Stelling on 26/09/2013.
-//  Copyright (c) 2013 Empirical Magic Ltd. All rights reserved.
+//  Created by Richard Stelling on 03/05/2014.
+//  Copyright (c) 2014 Richard Stelling. All rights reserved.
 //
 
-#import "RTKASN1Object.h"
+#import "RTKANS1Object.h"
+#import "RTKANS1Set.h"
+#import "RTKANS1Sequence.h"
+
 #import <openssl/pkcs7.h>
 
-#import "RTKASN1Set.h"
-#import "RTKASN1Sequence.h"
-#import "RTKASN1OctetString.h"
+@interface RTKANS1Object ()
 
-/*
- ReceiptModule DEFINITIONS ::=
- BEGIN
- 
- ReceiptAttribute ::= SEQUENCE {
- type    INTEGER,
- version INTEGER,
- value   OCTET STRING
- }
- 
- Payload ::= SET OF ReceiptAttribute
- 
- END
- */
+@property (readonly, nonatomic) RTKANS1ObjectType objectType;
+@property (readonly, nonatomic) RTKANS1ObjectXClass objectXClass;
+@property (readonly, nonatomic) NSData *objectData;
 
-@implementation RTKASN1Object
+@property (assign, nonatomic) NSInteger objectSize; //includes tags
 
-- (instancetype)initWithData:(NSData *)asn1Data
+// Data Access
++ (NSString *)stringFromData:(NSData *)strData __attribute__((pure));
++ (NSNumber *)numberFromData:(NSData *)intData __attribute__((pure));
++ (NSData *)dataFromData:(NSData *)someData __attribute__((pure));
+
+@end
+
+@implementation RTKANS1Object
+
+#pragma mark - Life Cycle
+
+- (id)initWithData:(NSData *)ans1Data
 {
-    if(self = [super init])
+    NSParameterAssert(ans1Data);
+    
+    @autoreleasepool
     {
-        _decodedData = [RTKASN1Object decodeASN1Data:asn1Data];
+        RTKANS1Object *outerObject = [self objectWithData:ans1Data];
         
-        if(!_decodedData)
-            self = nil;
+        if(outerObject.objectType == V_ASN1_SET || outerObject.objectType == V_ASN1_SEQUENCE)
+        {
+            NSInteger inDataIndex = (long)outerObject.objectData.length;
+            NSInteger outDataIndex = 0;
+            
+            do
+            {
+                NSData *chunk = [outerObject.objectData subdataWithRange:NSMakeRange(outDataIndex, inDataIndex - outDataIndex)];
+
+                RTKANS1Object *ans1Obj = [[RTKANS1Object alloc] initWithData:chunk];
+
+                NSAssert([outerObject isKindOfClass:[RTKANS1Set class]] || [outerObject isKindOfClass:[RTKANS1Sequence class]], @"Incorrect ANS1 type.");
+                
+                if([outerObject isKindOfClass:[RTKANS1Set class]])
+                    [(RTKANS1Set *)outerObject addObject:ans1Obj];
+                else if([outerObject isKindOfClass:[RTKANS1Sequence class]])
+                    [(RTKANS1Sequence *)outerObject addObject:ans1Obj];
+
+                outDataIndex += (long)ans1Obj.objectSize;
+                
+            } while( inDataIndex > outDataIndex );
+        }
+        
+        self = outerObject;
     }
     
     return self;
 }
 
-// @return : an array of decoded receipts objetcs or a single decoded receipt object
-+ (id)decodeASN1Data:(NSData *)data
+- (instancetype)initWithType:(RTKANS1ObjectType)ans1Type tag:(RTKANS1ObjectXClass)ans1Tag data:(NSData *)ans1Data
 {
-    const uint8_t *locationInData = data.bytes;
-    const uint8_t *endOfData = (locationInData + data.length);
-    const uint8_t *lengthToRead = (data.length + locationInData);
+    NSParameterAssert(ans1Data);
     
-    //In the outer container there maybe mutiple objects. In this case
-    //this method will return an array of these objects, if only one root
-    //object is found that object is returned and this array removed.
-    NSMutableArray *decodedObjects = [NSMutableArray arrayWithCapacity:1];
+    self = [super init];
     
-    int count = 0;              //count objects
-    
-    do
+    if(self)
     {
-        long length = 0;            //hold returnd length of read data
-        int type = 0, xclass = 0;   //hold type of object
-        
-        //Subtract the locationInData from length to read because locationInData will
-        //be incremented by ASN1_get_object and by adding the length
-        int result = ASN1_get_object(&locationInData, &length, &type, &xclass, (lengthToRead - locationInData));
-        
-        //NSLog(@"[%d] Type: %d (length: %ld) result: %d", count, type, length, result);
-        
-        //Remember: locationInData has be incremented pased the type and length,
-        //so just reading the data is enough to get the value/data. When creating
-        //an ASN.1 type object a copy of the locationInData pointer is taken
-        //so we can just jump over the object by adding length to locationInData
-        //once processed.
-        
-        NSData *asn1ObjectData = [NSData dataWithBytesNoCopy:(void *)locationInData length:length freeWhenDone:NO];
-        
-        if(result == V_ASN1_UNIVERSAL && xclass == V_ASN1_PRIVATE)
-        {
-            //What is xclass???
-            
-            [decodedObjects addObject:[data copy]];
-            
-            break;
-        }
-        else if(result == V_ASN1_CONSTRUCTED)
-        {
-            //NSLog(@"Created an ASN.1 structure");
-            id constructObject = [self decodeConstructObject:type data:asn1ObjectData];
-            
-            if(constructObject)
-                [decodedObjects addObject:constructObject];
-            else
-                NSLog(@"object was nil, unsupported!");
-        }
-        else if(result == V_ASN1_UNIVERSAL)
-        {
-            //NSLog(@"Data is a specific type (int, bool et. al.)");
-            id universalObject = [self decodeUniversalObject:type data:asn1ObjectData];
-            
-            if(universalObject)
-                [decodedObjects addObject:universalObject];
-            else
-                NSLog(@"object was nil, unsupported!");
-        }
-        else if(result == V_ASN1_CONTEXT_SPECIFIC || xclass == V_ASN1_CONTEXT_SPECIFIC)
-        {
-            //NSLog(@"Context specific (just copy everything)");
-            [decodedObjects addObject:[data copy]];
-            
-            break;
-        }
-        else if(result == ASN1_R_UNKNOWN_FORMAT)
-        {
-            //The Opaque Value (https://developer.apple.com/library/ios/releasenotes/General/ValidateAppStoreReceipt/Chapters/ReceiptFields.html)
-            //is just a stream of bytes, ASN1_get_object returns an unknown error
-            //so if we don't copy the bytes we end up with a sequence with an empty array
-            //as the payload.
-            //
-            //length will also contation a garbage value
-            [decodedObjects addObject:[data copy]];
-            
-            break;
-        }
-        else
-        {
-            //Unsure what to do here
-            NSLog(@"This is odd... %d", result);
-        }
-        
-        //Advance to next object, ASN1_get_object has already increased
-        //locationInData by 2 bytes (type and length)
-        locationInData += length;
-        count++;
-    } while(locationInData < endOfData);
-    
-    //Return an NSArray if we found more that one root object
-    return [decodedObjects count]==1?decodedObjects[0]:[decodedObjects copy];
-}
-
-+ (id)decodeConstructObject:(int)objectType data:(NSData *)constructObjectData
-{
-    id returnObject = nil;
-    
-    switch(objectType)
-    {
-        case V_ASN1_SET:
-            returnObject = [[RTKASN1Set alloc] initWithData:constructObjectData];
-            break;
-            
-        case V_ASN1_SEQUENCE:
-            returnObject = [[RTKASN1Sequence alloc] initWithData:constructObjectData];
-            break;
-            
-        default:
-            NSLog(@"Object of type: %d is not supported", objectType);
-            break;
+        _objectType = ans1Type;
+        _objectXClass = ans1Tag;
+        _objectData = [ans1Data copy];
     }
     
-    return returnObject;
+    return self;
 }
 
-+ (id)decodeUniversalObject:(int)objectType data:(NSData *)universalObjectData
-{
-    id returnObject = nil;
-    
-    switch(objectType)
-    {
-        case V_ASN1_INTEGER:
-        {
-            NSUInteger length = universalObjectData.length;
-            int integer = 0;
-            int maxSiftValue = ({
-                int shiftVal = (int)pow(2, (length + 1));
-                shiftVal = (shiftVal==4?0:shiftVal);
-                shiftVal; //return
-            });
-            
-            for(int i = 0; i < universalObjectData.length; i++)
-            {
-                long long value = 0;
-                [universalObjectData getBytes:&value range:NSMakeRange(i, 1)];
-                integer += (value << maxSiftValue);
-                maxSiftValue -= 8;
-            }
+#pragma mark - Data Access
 
-            returnObject = @(integer);
-        }
-            break;
-            
-        case V_ASN1_OCTET_STRING:
+- (NSNumber *)numberValue
+{
+    return self.objectType==V_ASN1_INTEGER?[RTKANS1Object numberFromData:self.objectData]:nil;
+}
+
+- (NSString *)stringValue
+{
+    return (self.objectType == V_ASN1_UTF8STRING || self.objectType == V_ASN1_IA5STRING)?[RTKANS1Object stringFromData:self.objectData]:nil;
+}
+
+- (NSData *)dataValue
+{
+    return [RTKANS1Object dataFromData:self.objectData];
+}
+
+- (id)objectWithData:(NSData *)someData
+{
+    void *startOfData = (void *)someData.bytes;
+    long startIndex = (long)startOfData;
+    
+    long length = 0;
+    int type = 0, xclass = 0;
+    
+    RTKANS1Object *object = nil;
+    
+    int result = ASN1_get_object((const unsigned char **)&startOfData, &length, &type, &xclass, (long)someData.length);
+    
+    //TODO: ERROR CHECKING
+    
+    if(result == V_ASN1_CONSTRUCTED || result == V_ASN1_UNIVERSAL)
+    {
+        NSData *rawData = [NSData dataWithBytesNoCopy:startOfData length:length freeWhenDone:NO];
+        
+        switch(type)
         {
-            returnObject = [[RTKASN1OctetString alloc] initWithData:universalObjectData];
+            case V_ASN1_SET:
+                object = [[RTKANS1Set alloc] initWithType:type tag:xclass data:rawData];
+                break;
+          
+            case V_ASN1_SEQUENCE:
+                object = [[RTKANS1Sequence alloc] initWithType:type tag:xclass data:rawData];
+                break;
+                
+            default:
+                object = [[RTKANS1Object alloc] initWithType:type tag:xclass data:rawData];
+                break;
         }
-            break;
-            
-        //case V_ASN1_PRINTABLESTRING:
-            //Same as UTF8 STRING?
-        case V_ASN1_UTF8STRING:
-        {
-            returnObject = [[NSString alloc] initWithData:universalObjectData
+        
+        object.objectSize = ((long)startOfData - (long)startIndex);
+        object.objectSize += length;
+    }
+    else
+    {
+        /*
+         V_ASN1_APPLICATION
+         V_ASN1_CONTEXT_SPECIFIC
+         V_ASN1_PRIVATE
+         */
+        
+        NSData *rawData = [NSData dataWithBytesNoCopy:(void *)someData.bytes length:someData.length freeWhenDone:NO];
+        object = [[RTKANS1Object alloc] initWithType:V_ASN1_UNDEF tag:xclass data:rawData];
+        
+        object.objectSize = someData.length;
+    }
+    
+    return object;
+}
+
+#pragma mark - Class Methods
+
++ (NSNumber *)numberFromData:(NSData *)intData
+{
+    NSUInteger length = intData.length;
+    int integer = 0;
+    int maxSiftValue = ({
+        int shiftVal = (int)pow(2, (length + 1));
+        shiftVal = (shiftVal==4?0:shiftVal);
+        shiftVal; //return
+    });
+    
+    for(int i = 0; i < intData.length; i++)
+    {
+        long long value = 0;
+        [intData getBytes:&value range:NSMakeRange(i, 1)];
+        integer += (value << maxSiftValue);
+        maxSiftValue -= 8;
+    }
+    
+    return @(integer);
+}
+
++ (NSString *)stringFromData:(NSData *)strData
+{
+    NSString *utf8String = [[NSString alloc] initWithData:strData
                                                  encoding:NSUTF8StringEncoding];
-        }
-            break;
-        
-        case V_ASN1_IA5STRING:
-        {
-            returnObject = [[NSString alloc] initWithData:universalObjectData
-                                                 encoding:NSASCIIStringEncoding];
-        }
-            break;
-            
-        case V_ASN1_UNDEF:
-            NSLog(@"Undefined!");
+    
+    return utf8String;
+}
 
-        default:
-            //Currently we don't support this type
-            NSLog(@"Object of type: %d is not supported", objectType);
-            break;
++ (NSData *)dataFromData:(NSData *)someData
+{
+    NSData *data = [NSData dataWithBytes:someData.bytes length:someData.length];
+    
+    return data;
+}
+
+#pragma mark - NSObject
+
+- (NSString *)description //TODO: tiday up
+{
+    NSString *desc = @"";
+    
+    if(self.objectType == V_ASN1_OCTET_STRING)
+    {
+        desc = [NSString stringWithFormat:@"<RTK OCTET STRING : %p> size: %ld", self, (long)self.objectData.length];
+    }
+    else if(self.objectType == V_ASN1_INTEGER)
+    {
+        desc = [NSString stringWithFormat:@"<RTK INTEGER : %p> ---> %@", self, [self numberValue]];
+    }
+    else if(self.objectType == V_ASN1_UTF8STRING)
+    {
+        desc = [NSString stringWithFormat:@"<RTK UTF8 : %p> ---> %@", self, [self stringValue]];
+    }
+    else if(self.objectType == V_ASN1_IA5STRING)
+    {
+        desc = [NSString stringWithFormat:@"<RTK IA5 : %p> ---> %@", self, [self stringValue]];
+    }
+    else
+    {
+        desc = [NSString stringWithFormat:@"<RTK UNKNOWN : %p> size: %ld", self, (long)self.objectData.length];
     }
     
-    return returnObject;
+    return desc;
 }
 
 @end

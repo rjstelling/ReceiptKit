@@ -1,30 +1,13 @@
 //
 //  RTKASN1Sequence.h
-//  ReceiptKit
+//  rtk-proto
 //
-//  Created by Richard Stelling on 26/09/2013.
-//  Copyright (c) 2013 Empirical Magic Ltd. All rights reserved.
+//  Created by Richard Stelling on 03/05/2014.
+//  Copyright (c) 2014 Richard Stelling. All rights reserved.
 //
 
-#error THIS IS LEGACY CODE DO NOT USE
+#import "RTKANS1ObjectContainer.h"
 
-#import <UIKit/UIKit.h>
-#import "RTKASN1Object.h"
-
-@interface RTKASN1Sequence : RTKASN1Object <NSFastEnumeration>
-
-- (instancetype)initWithData:(NSData *)seqData;
-
-//Access
-- (id)objectAtIndexedSubscript:(NSUInteger)idx;
-
-@end
-
-@interface RTKASN1Sequence (ReceiptKit)
-
-//Naive access
-- (NSInteger)objectTypeID;
-- (NSInteger)objectVersion;
-- (id)objectValue;
+@interface RTKANS1Sequence : RTKANS1ObjectContainer
 
 @end

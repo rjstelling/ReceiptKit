@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E80CD4C417F4D8AA0079AF4B /* RTKASN1Sequence.m in Sources */ = {isa = PBXBuildFile; fileRef = E80CD4C317F4D8AA0079AF4B /* RTKASN1Sequence.m */; };
-		E80CD4C717F511040079AF4B /* RTKASN1OctetString.m in Sources */ = {isa = PBXBuildFile; fileRef = E80CD4C617F511040079AF4B /* RTKASN1OctetString.m */; };
 		E80F868B17F995110011F9C8 /* RTKPurchaseInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = E80F868A17F995110011F9C8 /* RTKPurchaseInformation.m */; };
 		E80F868E17F9964E0011F9C8 /* RTKInAppPurchaseInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = E80F868D17F9964E0011F9C8 /* RTKInAppPurchaseInformation.m */; };
-		E885285E17F4C31900A804E4 /* RTKASN1Object.m in Sources */ = {isa = PBXBuildFile; fileRef = E885285D17F4C31900A804E4 /* RTKASN1Object.m */; };
+		E872452719194FAE004AC8A3 /* RTKANS1Object.m in Sources */ = {isa = PBXBuildFile; fileRef = E872452019194FAE004AC8A3 /* RTKANS1Object.m */; };
+		E872452819194FAE004AC8A3 /* RTKANS1ObjectContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = E872452219194FAE004AC8A3 /* RTKANS1ObjectContainer.m */; };
+		E872452919194FAE004AC8A3 /* RTKANS1Sequence.m in Sources */ = {isa = PBXBuildFile; fileRef = E872452419194FAE004AC8A3 /* RTKANS1Sequence.m */; };
+		E872452A19194FAE004AC8A3 /* RTKANS1Set.m in Sources */ = {isa = PBXBuildFile; fileRef = E872452619194FAE004AC8A3 /* RTKANS1Set.m */; };
 		E89646CE17FB55B700E53D5E /* NSDate+Receipt.m in Sources */ = {isa = PBXBuildFile; fileRef = E89646CD17FB55B700E53D5E /* NSDate+Receipt.m */; };
 		E89646CF17FB55B700E53D5E /* NSDate+Receipt.m in Sources */ = {isa = PBXBuildFile; fileRef = E89646CD17FB55B700E53D5E /* NSDate+Receipt.m */; };
 		E8B36F7417FB1CA8005CD9D9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8B6317817F481C10060E6CB /* Foundation.framework */; };
@@ -26,11 +27,6 @@
 		E8B36F9517FB1D5B005CD9D9 /* RTKReceiptParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E8B6320B17F489AA0060E6CB /* RTKReceiptParser.m */; };
 		E8B36F9617FB1D5B005CD9D9 /* RTKPurchaseInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = E80F868A17F995110011F9C8 /* RTKPurchaseInformation.m */; };
 		E8B36F9717FB1D5B005CD9D9 /* RTKInAppPurchaseInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = E80F868D17F9964E0011F9C8 /* RTKInAppPurchaseInformation.m */; };
-		E8B36F9817FB1D5B005CD9D9 /* RTKASN1Object.m in Sources */ = {isa = PBXBuildFile; fileRef = E885285D17F4C31900A804E4 /* RTKASN1Object.m */; };
-		E8B36F9917FB1D5B005CD9D9 /* RTKASN1Set.m in Sources */ = {isa = PBXBuildFile; fileRef = E8B6320E17F4BCC20060E6CB /* RTKASN1Set.m */; };
-		E8B36F9A17FB1D5B005CD9D9 /* RTKASN1Sequence.m in Sources */ = {isa = PBXBuildFile; fileRef = E80CD4C317F4D8AA0079AF4B /* RTKASN1Sequence.m */; };
-		E8B36F9B17FB1D5B005CD9D9 /* RTKASN1OctetString.m in Sources */ = {isa = PBXBuildFile; fileRef = E80CD4C617F511040079AF4B /* RTKASN1OctetString.m */; };
-		E8B36F9C17FB1D5B005CD9D9 /* NSData+Crypto.m in Sources */ = {isa = PBXBuildFile; fileRef = E8B631B317F487070060E6CB /* NSData+Crypto.m */; };
 		E8B6317917F481C10060E6CB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8B6317817F481C10060E6CB /* Foundation.framework */; };
 		E8B6317B17F481C10060E6CB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8B6317A17F481C10060E6CB /* CoreGraphics.framework */; };
 		E8B6317D17F481C10060E6CB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8B6317C17F481C10060E6CB /* UIKit.framework */; };
@@ -47,11 +43,9 @@
 		E8B631A417F481C10060E6CB /* ReceiptKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E8B631A317F481C10060E6CB /* ReceiptKitTests.m */; };
 		E8B631AF17F485280060E6CB /* receipt in Resources */ = {isa = PBXBuildFile; fileRef = E8B631AD17F485280060E6CB /* receipt */; };
 		E8B631B017F485280060E6CB /* apple-cert in Resources */ = {isa = PBXBuildFile; fileRef = E8B631AE17F485280060E6CB /* apple-cert */; };
-		E8B631B417F487070060E6CB /* NSData+Crypto.m in Sources */ = {isa = PBXBuildFile; fileRef = E8B631B317F487070060E6CB /* NSData+Crypto.m */; };
 		E8B6320817F487600060E6CB /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E8B6320517F487600060E6CB /* libcrypto.a */; settings = {ATTRIBUTES = (Weak, ); }; };
 		E8B6320917F487600060E6CB /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E8B6320617F487600060E6CB /* libssl.a */; settings = {ATTRIBUTES = (Weak, ); }; };
 		E8B6320C17F489AA0060E6CB /* RTKReceiptParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E8B6320B17F489AA0060E6CB /* RTKReceiptParser.m */; };
-		E8B6320F17F4BCC20060E6CB /* RTKASN1Set.m in Sources */ = {isa = PBXBuildFile; fileRef = E8B6320E17F4BCC20060E6CB /* RTKASN1Set.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,17 +79,19 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		E80CD4C217F4D8AA0079AF4B /* RTKASN1Sequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTKASN1Sequence.h; sourceTree = "<group>"; };
-		E80CD4C317F4D8AA0079AF4B /* RTKASN1Sequence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTKASN1Sequence.m; sourceTree = "<group>"; };
-		E80CD4C517F511040079AF4B /* RTKASN1OctetString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTKASN1OctetString.h; sourceTree = "<group>"; };
-		E80CD4C617F511040079AF4B /* RTKASN1OctetString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTKASN1OctetString.m; sourceTree = "<group>"; };
 		E80F868917F995110011F9C8 /* RTKPurchaseInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTKPurchaseInformation.h; sourceTree = "<group>"; };
 		E80F868A17F995110011F9C8 /* RTKPurchaseInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTKPurchaseInformation.m; sourceTree = "<group>"; };
 		E80F868C17F9964E0011F9C8 /* RTKInAppPurchaseInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTKInAppPurchaseInformation.h; sourceTree = "<group>"; };
 		E80F868D17F9964E0011F9C8 /* RTKInAppPurchaseInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTKInAppPurchaseInformation.m; sourceTree = "<group>"; };
+		E872451F19194FAE004AC8A3 /* RTKANS1Object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTKANS1Object.h; sourceTree = "<group>"; };
+		E872452019194FAE004AC8A3 /* RTKANS1Object.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTKANS1Object.m; sourceTree = "<group>"; };
+		E872452119194FAE004AC8A3 /* RTKANS1ObjectContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTKANS1ObjectContainer.h; sourceTree = "<group>"; };
+		E872452219194FAE004AC8A3 /* RTKANS1ObjectContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTKANS1ObjectContainer.m; sourceTree = "<group>"; };
+		E872452319194FAE004AC8A3 /* RTKANS1Sequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTKANS1Sequence.h; sourceTree = "<group>"; };
+		E872452419194FAE004AC8A3 /* RTKANS1Sequence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTKANS1Sequence.m; sourceTree = "<group>"; };
+		E872452519194FAE004AC8A3 /* RTKANS1Set.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTKANS1Set.h; sourceTree = "<group>"; };
+		E872452619194FAE004AC8A3 /* RTKANS1Set.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTKANS1Set.m; sourceTree = "<group>"; };
 		E87E0CAF190FC1E400F7480B /* ReceiptKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReceiptKit.h; sourceTree = "<group>"; };
-		E885285C17F4C31900A804E4 /* RTKASN1Object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTKASN1Object.h; sourceTree = "<group>"; };
-		E885285D17F4C31900A804E4 /* RTKASN1Object.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTKASN1Object.m; sourceTree = "<group>"; };
 		E89646CC17FB55B700E53D5E /* NSDate+Receipt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Receipt.h"; sourceTree = "<group>"; };
 		E89646CD17FB55B700E53D5E /* NSDate+Receipt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Receipt.m"; sourceTree = "<group>"; };
 		E8B36F7317FB1CA8005CD9D9 /* libreceiptkit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libreceiptkit.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -127,8 +123,6 @@
 		E8B631A317F481C10060E6CB /* ReceiptKitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReceiptKitTests.m; sourceTree = "<group>"; };
 		E8B631AD17F485280060E6CB /* receipt */ = {isa = PBXFileReference; lastKnownFileType = file; path = receipt; sourceTree = "<group>"; };
 		E8B631AE17F485280060E6CB /* apple-cert */ = {isa = PBXFileReference; lastKnownFileType = file; path = "apple-cert"; sourceTree = "<group>"; };
-		E8B631B217F487070060E6CB /* NSData+Crypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Crypto.h"; sourceTree = "<group>"; };
-		E8B631B317F487070060E6CB /* NSData+Crypto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Crypto.m"; sourceTree = "<group>"; };
 		E8B631B917F487600060E6CB /* aes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aes.h; sourceTree = "<group>"; };
 		E8B631BA17F487600060E6CB /* asn1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = asn1.h; sourceTree = "<group>"; };
 		E8B631BB17F487600060E6CB /* asn1_mac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = asn1_mac.h; sourceTree = "<group>"; };
@@ -208,8 +202,6 @@
 		E8B6320617F487600060E6CB /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libssl.a; sourceTree = "<group>"; };
 		E8B6320A17F489AA0060E6CB /* RTKReceiptParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTKReceiptParser.h; sourceTree = "<group>"; };
 		E8B6320B17F489AA0060E6CB /* RTKReceiptParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTKReceiptParser.m; sourceTree = "<group>"; };
-		E8B6320D17F4BCC20060E6CB /* RTKASN1Set.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTKASN1Set.h; sourceTree = "<group>"; };
-		E8B6320E17F4BCC20060E6CB /* RTKASN1Set.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTKASN1Set.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -385,16 +377,14 @@
 				E80F868A17F995110011F9C8 /* RTKPurchaseInformation.m */,
 				E80F868C17F9964E0011F9C8 /* RTKInAppPurchaseInformation.h */,
 				E80F868D17F9964E0011F9C8 /* RTKInAppPurchaseInformation.m */,
-				E885285C17F4C31900A804E4 /* RTKASN1Object.h */,
-				E885285D17F4C31900A804E4 /* RTKASN1Object.m */,
-				E8B6320D17F4BCC20060E6CB /* RTKASN1Set.h */,
-				E8B6320E17F4BCC20060E6CB /* RTKASN1Set.m */,
-				E80CD4C217F4D8AA0079AF4B /* RTKASN1Sequence.h */,
-				E80CD4C317F4D8AA0079AF4B /* RTKASN1Sequence.m */,
-				E80CD4C517F511040079AF4B /* RTKASN1OctetString.h */,
-				E80CD4C617F511040079AF4B /* RTKASN1OctetString.m */,
-				E8B631B217F487070060E6CB /* NSData+Crypto.h */,
-				E8B631B317F487070060E6CB /* NSData+Crypto.m */,
+				E872451F19194FAE004AC8A3 /* RTKANS1Object.h */,
+				E872452019194FAE004AC8A3 /* RTKANS1Object.m */,
+				E872452119194FAE004AC8A3 /* RTKANS1ObjectContainer.h */,
+				E872452219194FAE004AC8A3 /* RTKANS1ObjectContainer.m */,
+				E872452319194FAE004AC8A3 /* RTKANS1Sequence.h */,
+				E872452419194FAE004AC8A3 /* RTKANS1Sequence.m */,
+				E872452519194FAE004AC8A3 /* RTKANS1Set.h */,
+				E872452619194FAE004AC8A3 /* RTKANS1Set.m */,
 				E89646CC17FB55B700E53D5E /* NSDate+Receipt.h */,
 				E89646CD17FB55B700E53D5E /* NSDate+Receipt.m */,
 			);
@@ -662,15 +652,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8B36F7B17FB1CA8005CD9D9 /* receiptkit.m in Sources */,
-				E8B36F9C17FB1D5B005CD9D9 /* NSData+Crypto.m in Sources */,
-				E8B36F9B17FB1D5B005CD9D9 /* RTKASN1OctetString.m in Sources */,
+				E872452919194FAE004AC8A3 /* RTKANS1Sequence.m in Sources */,
+				E872452719194FAE004AC8A3 /* RTKANS1Object.m in Sources */,
+				E872452819194FAE004AC8A3 /* RTKANS1ObjectContainer.m in Sources */,
 				E89646CF17FB55B700E53D5E /* NSDate+Receipt.m in Sources */,
-				E8B36F9817FB1D5B005CD9D9 /* RTKASN1Object.m in Sources */,
+				E872452A19194FAE004AC8A3 /* RTKANS1Set.m in Sources */,
 				E8B36F9517FB1D5B005CD9D9 /* RTKReceiptParser.m in Sources */,
-				E8B36F9917FB1D5B005CD9D9 /* RTKASN1Set.m in Sources */,
 				E8B36F9717FB1D5B005CD9D9 /* RTKInAppPurchaseInformation.m in Sources */,
 				E8B36F9617FB1D5B005CD9D9 /* RTKPurchaseInformation.m in Sources */,
-				E8B36F9A17FB1D5B005CD9D9 /* RTKASN1Sequence.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -689,12 +678,7 @@
 				E8B6318917F481C10060E6CB /* RTKAppDelegate.m in Sources */,
 				E89646CE17FB55B700E53D5E /* NSDate+Receipt.m in Sources */,
 				E80F868B17F995110011F9C8 /* RTKPurchaseInformation.m in Sources */,
-				E80CD4C717F511040079AF4B /* RTKASN1OctetString.m in Sources */,
-				E80CD4C417F4D8AA0079AF4B /* RTKASN1Sequence.m in Sources */,
-				E885285E17F4C31900A804E4 /* RTKASN1Object.m in Sources */,
-				E8B631B417F487070060E6CB /* NSData+Crypto.m in Sources */,
 				E8B6320C17F489AA0060E6CB /* RTKReceiptParser.m in Sources */,
-				E8B6320F17F4BCC20060E6CB /* RTKASN1Set.m in Sources */,
 				E80F868E17F9964E0011F9C8 /* RTKInAppPurchaseInformation.m in Sources */,
 				E8B6318517F481C10060E6CB /* main.m in Sources */,
 				E8B6318F17F481C10060E6CB /* RTKViewController.m in Sources */,

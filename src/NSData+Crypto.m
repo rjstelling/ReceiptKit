@@ -47,21 +47,28 @@ NSString *const RTKDataCryptoErrorDomain = @"com.empiricalmagic.nsdata+crypto.er
     BIO_free(b_x509);
     PKCS7_free(p7);
     
+    NSData *payload = nil;
+    
     if(result == 1)
     {
         const uint8_t *data = malloc(b_receiptPayload->num_write);
         BIO_read(b_receiptPayload, (void *)data, (int)b_receiptPayload->num_write);
         
-        NSData *payload = [NSData dataWithBytes:data length:b_receiptPayload->num_write];
-        return payload;
+        payload = [NSData dataWithBytes:data length:b_receiptPayload->num_write];
+        
+        free((void *)data);
     }
-    else
+    else if(*error)
     {
         *error = [NSError errorWithDomain:RTKDataCryptoErrorDomain
                                      code:1
                                  userInfo:@{ NSLocalizedDescriptionKey : @"PKCS7 verifcation failed.", @"open-ssl-error" : @(result) }];
-        return nil;
     }
+    
+    //clean up
+    BIO_free(b_receiptPayload);
+    
+    return payload;
 }
 
 - (NSData *)sha1Value

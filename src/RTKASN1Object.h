@@ -1,22 +1,27 @@
 //
 //  RTKASN1Object.h
-//  ReceiptKit
+//  rtk-proto
 //
-//  Created by Richard Stelling on 26/09/2013.
-//  Copyright (c) 2013 Empirical Magic Ltd. All rights reserved.
+//  Created by Richard Stelling on 03/05/2014.
+//  Copyright (c) 2014 Richard Stelling. All rights reserved.
 //
-
-#error THIS IS LEGACY CODE DO NOT USE
 
 #import <Foundation/Foundation.h>
 
-@interface RTKASN1Object : NSObject
-{
-    @protected
-    id _decodedData;
-}
+//Types
+typedef int RTKANS1ObjectType;
+typedef int RTKANS1ObjectXClass;
 
-+ (id)decodeASN1Data:(NSData *)data;
-- (instancetype)initWithData:(NSData *)asn1Data;
+@interface RTKANS1Object : NSObject
+
+///This can return an OBJECT, SET or SEQUENCE
+- (id)initWithData:(NSData *)ans1Data;
+
+- (instancetype)initWithType:(RTKANS1ObjectType)ans1Type tag:(RTKANS1ObjectXClass)ans1Tag data:(NSData *)ans1Data;
+
+///Data Access, these retun nil if the undelying object is not valid
+- (NSNumber *)numberValue;
+- (NSString *)stringValue;
+- (NSData *)dataValue;
 
 @end
