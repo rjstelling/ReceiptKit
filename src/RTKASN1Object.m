@@ -68,7 +68,7 @@
         
         //NSLog(@"[%d] Type: %d (length: %ld) result: %d", count, type, length, result);
         
-        //Remember: locationInData has be incremented pased the tyoe and length,
+        //Remember: locationInData has be incremented pased the type and length,
         //so just reading the data is enough to get the value/data. When creating
         //an ASN.1 type object a copy of the locationInData pointer is taken
         //so we can just jump over the object by adding length to locationInData
