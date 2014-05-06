@@ -9,7 +9,7 @@
 #import "RTKPurchaseInformation.h"
 #import "RTKASN1Set.h"
 #import "RTKASN1Sequence.h"
-#import "RTKASN1OctetString.h"
+#import "RTKAttribute.h"
 #import "NSDate+Receipt.h"
 
 #import <objc/runtime.h>
@@ -49,42 +49,50 @@
 - (void)extractProperties:(RTKASN1Set *)decodedPayload
 {
     for(RTKASN1Sequence *seq in (RTKASN1Set *)decodedPayload)
-    {        
-        switch([seq objectTypeID])
+    {
+        RTKAttribute *attribute = [[RTKAttribute alloc] initWithSequence:seq];
+        
+        switch(attribute.attributeType)
         {
             case RTKBundleID:
-                _bundleIdentifier = [seq objectValue];
+                _bundleIdentifier = [attribute attributeValue];
                 NSAssert([_bundleIdentifier isKindOfClass:[NSString class]], @"_bundleIdentifier is not of type NSString");
                 break;
                 
             case RTKVersion:
-                _bundleVersion = [seq objectValue];
+                _bundleVersion = [attribute attributeValue];
                 NSAssert([_bundleVersion isKindOfClass:[NSString class]], @"_bundleVersion is not of type NSString");
                 break;
                 
             case RTKOriginalVersion:
-                _originalVersion = [seq objectValue];
+                _originalVersion = [attribute attributeValue];
                 NSAssert([_originalVersion isKindOfClass:[NSString class]], @"_originalVersion is not of type NSString");
                 break;
                 
             case RTKOpaqueValue:
-                _opaqueValue = [seq objectValue];
+                _opaqueValue = [attribute attributeValue];
                 NSAssert([_opaqueValue isKindOfClass:[NSData class]], @"_opaqueValue is not of type NSData");
                 break;
                 
             case RTKHash:
-                _hash = [seq objectValue];
+                _hash = [attribute attributeValue];
                 NSAssert([_hash isKindOfClass:[NSData class]], @"_hash is not of type NSData");
                 break;
                 
             case RTKExpiryDate:
-                _expiryDate = [NSDate dateFromReceiptDateString:[seq objectValue]];
+                _expiryDate = [attribute attributeValue];
+                NSAssert([_expiryDate isKindOfClass:[NSDate class]], @"_expiryDate is not of type NSDate");
                 break;
                 
             case RTKInAppPurchase:
+            //The data assocated with an IAP is again a SET of SEQUENCES
             {
-                RTKInAppPurchaseInformation *iap = [[RTKInAppPurchaseInformation alloc] initWithASN1Object:[seq objectValue]];
+                RTKASN1Object *iapSet = [[RTKASN1Object alloc] initWithData:[attribute attributeValue]];
                 
+                NSAssert([iapSet isKindOfClass:[RTKASN1Set class]], @"Incorrect objet type");
+                
+                RTKInAppPurchaseInformation *iap = [[RTKInAppPurchaseInformation alloc] initWithASN1Object:iapSet];
+
                 if(_inAppPurchases)
                 {
                     _inAppPurchases = [_inAppPurchases setByAddingObject:iap];

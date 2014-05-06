@@ -9,10 +9,12 @@
 /* Begin PBXBuildFile section */
 		E80F868B17F995110011F9C8 /* RTKPurchaseInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = E80F868A17F995110011F9C8 /* RTKPurchaseInformation.m */; };
 		E80F868E17F9964E0011F9C8 /* RTKInAppPurchaseInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = E80F868D17F9964E0011F9C8 /* RTKInAppPurchaseInformation.m */; };
-		E872452719194FAE004AC8A3 /* RTKANS1Object.m in Sources */ = {isa = PBXBuildFile; fileRef = E872452019194FAE004AC8A3 /* RTKANS1Object.m */; };
-		E872452819194FAE004AC8A3 /* RTKANS1ObjectContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = E872452219194FAE004AC8A3 /* RTKANS1ObjectContainer.m */; };
-		E872452919194FAE004AC8A3 /* RTKANS1Sequence.m in Sources */ = {isa = PBXBuildFile; fileRef = E872452419194FAE004AC8A3 /* RTKANS1Sequence.m */; };
-		E872452A19194FAE004AC8A3 /* RTKANS1Set.m in Sources */ = {isa = PBXBuildFile; fileRef = E872452619194FAE004AC8A3 /* RTKANS1Set.m */; };
+		E872452719194FAE004AC8A3 /* RTKASN1Object.m in Sources */ = {isa = PBXBuildFile; fileRef = E872452019194FAE004AC8A3 /* RTKASN1Object.m */; };
+		E872452819194FAE004AC8A3 /* RTKASN1ObjectContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = E872452219194FAE004AC8A3 /* RTKASN1ObjectContainer.m */; };
+		E872452919194FAE004AC8A3 /* RTKASN1Sequence.m in Sources */ = {isa = PBXBuildFile; fileRef = E872452419194FAE004AC8A3 /* RTKASN1Sequence.m */; };
+		E872452A19194FAE004AC8A3 /* RTKASN1Set.m in Sources */ = {isa = PBXBuildFile; fileRef = E872452619194FAE004AC8A3 /* RTKASN1Set.m */; };
+		E872452D19195194004AC8A3 /* NSData+Crypto.m in Sources */ = {isa = PBXBuildFile; fileRef = E872452C19195194004AC8A3 /* NSData+Crypto.m */; };
+		E8724530191952AC004AC8A3 /* RTKAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = E872452F191952AC004AC8A3 /* RTKAttribute.m */; };
 		E89646CE17FB55B700E53D5E /* NSDate+Receipt.m in Sources */ = {isa = PBXBuildFile; fileRef = E89646CD17FB55B700E53D5E /* NSDate+Receipt.m */; };
 		E89646CF17FB55B700E53D5E /* NSDate+Receipt.m in Sources */ = {isa = PBXBuildFile; fileRef = E89646CD17FB55B700E53D5E /* NSDate+Receipt.m */; };
 		E8B36F7417FB1CA8005CD9D9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8B6317817F481C10060E6CB /* Foundation.framework */; };
@@ -83,14 +85,18 @@
 		E80F868A17F995110011F9C8 /* RTKPurchaseInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTKPurchaseInformation.m; sourceTree = "<group>"; };
 		E80F868C17F9964E0011F9C8 /* RTKInAppPurchaseInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTKInAppPurchaseInformation.h; sourceTree = "<group>"; };
 		E80F868D17F9964E0011F9C8 /* RTKInAppPurchaseInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTKInAppPurchaseInformation.m; sourceTree = "<group>"; };
-		E872451F19194FAE004AC8A3 /* RTKANS1Object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTKANS1Object.h; sourceTree = "<group>"; };
-		E872452019194FAE004AC8A3 /* RTKANS1Object.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTKANS1Object.m; sourceTree = "<group>"; };
-		E872452119194FAE004AC8A3 /* RTKANS1ObjectContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTKANS1ObjectContainer.h; sourceTree = "<group>"; };
-		E872452219194FAE004AC8A3 /* RTKANS1ObjectContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTKANS1ObjectContainer.m; sourceTree = "<group>"; };
-		E872452319194FAE004AC8A3 /* RTKANS1Sequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTKANS1Sequence.h; sourceTree = "<group>"; };
-		E872452419194FAE004AC8A3 /* RTKANS1Sequence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTKANS1Sequence.m; sourceTree = "<group>"; };
-		E872452519194FAE004AC8A3 /* RTKANS1Set.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTKANS1Set.h; sourceTree = "<group>"; };
-		E872452619194FAE004AC8A3 /* RTKANS1Set.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTKANS1Set.m; sourceTree = "<group>"; };
+		E872451F19194FAE004AC8A3 /* RTKASN1Object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTKASN1Object.h; sourceTree = "<group>"; };
+		E872452019194FAE004AC8A3 /* RTKASN1Object.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTKASN1Object.m; sourceTree = "<group>"; };
+		E872452119194FAE004AC8A3 /* RTKASN1ObjectContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTKASN1ObjectContainer.h; sourceTree = "<group>"; };
+		E872452219194FAE004AC8A3 /* RTKASN1ObjectContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTKASN1ObjectContainer.m; sourceTree = "<group>"; };
+		E872452319194FAE004AC8A3 /* RTKASN1Sequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTKASN1Sequence.h; sourceTree = "<group>"; };
+		E872452419194FAE004AC8A3 /* RTKASN1Sequence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTKASN1Sequence.m; sourceTree = "<group>"; };
+		E872452519194FAE004AC8A3 /* RTKASN1Set.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTKASN1Set.h; sourceTree = "<group>"; };
+		E872452619194FAE004AC8A3 /* RTKASN1Set.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTKASN1Set.m; sourceTree = "<group>"; };
+		E872452B19195194004AC8A3 /* NSData+Crypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Crypto.h"; sourceTree = "<group>"; };
+		E872452C19195194004AC8A3 /* NSData+Crypto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Crypto.m"; sourceTree = "<group>"; };
+		E872452E191952AC004AC8A3 /* RTKAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTKAttribute.h; sourceTree = "<group>"; };
+		E872452F191952AC004AC8A3 /* RTKAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTKAttribute.m; sourceTree = "<group>"; };
 		E87E0CAF190FC1E400F7480B /* ReceiptKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReceiptKit.h; sourceTree = "<group>"; };
 		E89646CC17FB55B700E53D5E /* NSDate+Receipt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Receipt.h"; sourceTree = "<group>"; };
 		E89646CD17FB55B700E53D5E /* NSDate+Receipt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Receipt.m"; sourceTree = "<group>"; };
@@ -377,14 +383,18 @@
 				E80F868A17F995110011F9C8 /* RTKPurchaseInformation.m */,
 				E80F868C17F9964E0011F9C8 /* RTKInAppPurchaseInformation.h */,
 				E80F868D17F9964E0011F9C8 /* RTKInAppPurchaseInformation.m */,
-				E872451F19194FAE004AC8A3 /* RTKANS1Object.h */,
-				E872452019194FAE004AC8A3 /* RTKANS1Object.m */,
-				E872452119194FAE004AC8A3 /* RTKANS1ObjectContainer.h */,
-				E872452219194FAE004AC8A3 /* RTKANS1ObjectContainer.m */,
-				E872452319194FAE004AC8A3 /* RTKANS1Sequence.h */,
-				E872452419194FAE004AC8A3 /* RTKANS1Sequence.m */,
-				E872452519194FAE004AC8A3 /* RTKANS1Set.h */,
-				E872452619194FAE004AC8A3 /* RTKANS1Set.m */,
+				E872452E191952AC004AC8A3 /* RTKAttribute.h */,
+				E872452F191952AC004AC8A3 /* RTKAttribute.m */,
+				E872451F19194FAE004AC8A3 /* RTKASN1Object.h */,
+				E872452019194FAE004AC8A3 /* RTKASN1Object.m */,
+				E872452119194FAE004AC8A3 /* RTKASN1ObjectContainer.h */,
+				E872452219194FAE004AC8A3 /* RTKASN1ObjectContainer.m */,
+				E872452319194FAE004AC8A3 /* RTKASN1Sequence.h */,
+				E872452419194FAE004AC8A3 /* RTKASN1Sequence.m */,
+				E872452519194FAE004AC8A3 /* RTKASN1Set.h */,
+				E872452619194FAE004AC8A3 /* RTKASN1Set.m */,
+				E872452B19195194004AC8A3 /* NSData+Crypto.h */,
+				E872452C19195194004AC8A3 /* NSData+Crypto.m */,
 				E89646CC17FB55B700E53D5E /* NSDate+Receipt.h */,
 				E89646CD17FB55B700E53D5E /* NSDate+Receipt.m */,
 			);
@@ -652,14 +662,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8B36F7B17FB1CA8005CD9D9 /* receiptkit.m in Sources */,
-				E872452919194FAE004AC8A3 /* RTKANS1Sequence.m in Sources */,
-				E872452719194FAE004AC8A3 /* RTKANS1Object.m in Sources */,
-				E872452819194FAE004AC8A3 /* RTKANS1ObjectContainer.m in Sources */,
+				E872452919194FAE004AC8A3 /* RTKASN1Sequence.m in Sources */,
+				E872452719194FAE004AC8A3 /* RTKASN1Object.m in Sources */,
+				E872452819194FAE004AC8A3 /* RTKASN1ObjectContainer.m in Sources */,
+				E8724530191952AC004AC8A3 /* RTKAttribute.m in Sources */,
 				E89646CF17FB55B700E53D5E /* NSDate+Receipt.m in Sources */,
-				E872452A19194FAE004AC8A3 /* RTKANS1Set.m in Sources */,
+				E872452A19194FAE004AC8A3 /* RTKASN1Set.m in Sources */,
 				E8B36F9517FB1D5B005CD9D9 /* RTKReceiptParser.m in Sources */,
 				E8B36F9717FB1D5B005CD9D9 /* RTKInAppPurchaseInformation.m in Sources */,
 				E8B36F9617FB1D5B005CD9D9 /* RTKPurchaseInformation.m in Sources */,
+				E872452D19195194004AC8A3 /* NSData+Crypto.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,14 +1,14 @@
 //
 //  RTKANS1ObjectContainer.m
-//  rtk-proto
+//  ReceiptKit
 //
 //  Created by Richard Stelling on 06/05/2014.
 //  Copyright (c) 2014 Richard Stelling. All rights reserved.
 //
 
-#import "RTKANS1ObjectContainer.h"
+#import "RTKASN1ObjectContainer.h"
 
-@implementation RTKANS1ObjectContainer
+@implementation RTKASN1ObjectContainer
 
 #pragma mark - Accessors
 

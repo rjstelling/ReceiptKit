@@ -1,14 +1,14 @@
 //
 //  RTKANS1ObjectContainer.h
-//  rtk-proto
+//  ReceiptKit
 //
 //  Created by Richard Stelling on 06/05/2014.
 //  Copyright (c) 2014 Richard Stelling. All rights reserved.
 //
 
-#import "RTKANS1Object.h"
+#import "RTKASN1Object.h"
 
-@interface RTKANS1ObjectContainer : RTKANS1Object <NSFastEnumeration>
+@interface RTKASN1ObjectContainer : RTKASN1Object <NSFastEnumeration>
 {
     id _internal;
 }

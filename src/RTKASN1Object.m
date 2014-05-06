@@ -1,18 +1,18 @@
 //
 //  RTKASN1Object.m
-//  rtk-proto
+//  ReceiptKit
 //
 //  Created by Richard Stelling on 03/05/2014.
 //  Copyright (c) 2014 Richard Stelling. All rights reserved.
 //
 
-#import "RTKANS1Object.h"
-#import "RTKANS1Set.h"
-#import "RTKANS1Sequence.h"
+#import "RTKASN1Object.h"
+#import "RTKASN1Set.h"
+#import "RTKASN1Sequence.h"
 
 #import <openssl/pkcs7.h>
 
-@interface RTKANS1Object ()
+@interface RTKASN1Object ()
 
 @property (readonly, nonatomic) RTKANS1ObjectType objectType;
 @property (readonly, nonatomic) RTKANS1ObjectXClass objectXClass;
@@ -27,17 +27,17 @@
 
 @end
 
-@implementation RTKANS1Object
+@implementation RTKASN1Object
 
 #pragma mark - Life Cycle
 
-- (id)initWithData:(NSData *)ans1Data
+- (id)initWithData:(NSData *)asn1Data
 {
-    NSParameterAssert(ans1Data);
+    NSParameterAssert(asn1Data);
     
     @autoreleasepool
     {
-        RTKANS1Object *outerObject = [self objectWithData:ans1Data];
+        RTKASN1Object *outerObject = [self objectWithData:asn1Data];
         
         if(outerObject.objectType == V_ASN1_SET || outerObject.objectType == V_ASN1_SEQUENCE)
         {
@@ -48,14 +48,14 @@
             {
                 NSData *chunk = [outerObject.objectData subdataWithRange:NSMakeRange(outDataIndex, inDataIndex - outDataIndex)];
 
-                RTKANS1Object *ans1Obj = [[RTKANS1Object alloc] initWithData:chunk];
+                RTKASN1Object *ans1Obj = [[RTKASN1Object alloc] initWithData:chunk];
 
-                NSAssert([outerObject isKindOfClass:[RTKANS1Set class]] || [outerObject isKindOfClass:[RTKANS1Sequence class]], @"Incorrect ANS1 type.");
+                NSAssert([outerObject isKindOfClass:[RTKASN1Set class]] || [outerObject isKindOfClass:[RTKASN1Sequence class]], @"Incorrect ANS1 type.");
                 
-                if([outerObject isKindOfClass:[RTKANS1Set class]])
-                    [(RTKANS1Set *)outerObject addObject:ans1Obj];
-                else if([outerObject isKindOfClass:[RTKANS1Sequence class]])
-                    [(RTKANS1Sequence *)outerObject addObject:ans1Obj];
+                if([outerObject isKindOfClass:[RTKASN1Set class]])
+                    [(RTKASN1Set *)outerObject addObject:ans1Obj];
+                else if([outerObject isKindOfClass:[RTKASN1Sequence class]])
+                    [(RTKASN1Sequence *)outerObject addObject:ans1Obj];
 
                 outDataIndex += (long)ans1Obj.objectSize;
                 
@@ -68,17 +68,17 @@
     return self;
 }
 
-- (instancetype)initWithType:(RTKANS1ObjectType)ans1Type tag:(RTKANS1ObjectXClass)ans1Tag data:(NSData *)ans1Data
+- (instancetype)initWithType:(RTKANS1ObjectType)asn1Type tag:(RTKANS1ObjectXClass)asn1Tag data:(NSData *)asn1Data
 {
-    NSParameterAssert(ans1Data);
+    NSParameterAssert(asn1Data);
     
     self = [super init];
     
     if(self)
     {
-        _objectType = ans1Type;
-        _objectXClass = ans1Tag;
-        _objectData = [ans1Data copy];
+        _objectType = asn1Type;
+        _objectXClass = asn1Tag;
+        _objectData = [asn1Data copy];
     }
     
     return self;
@@ -88,17 +88,17 @@
 
 - (NSNumber *)numberValue
 {
-    return self.objectType==V_ASN1_INTEGER?[RTKANS1Object numberFromData:self.objectData]:nil;
+    return self.objectType==V_ASN1_INTEGER?[RTKASN1Object numberFromData:self.objectData]:nil;
 }
 
 - (NSString *)stringValue
 {
-    return (self.objectType == V_ASN1_UTF8STRING || self.objectType == V_ASN1_IA5STRING)?[RTKANS1Object stringFromData:self.objectData]:nil;
+    return (self.objectType == V_ASN1_UTF8STRING || self.objectType == V_ASN1_IA5STRING)?[RTKASN1Object stringFromData:self.objectData]:nil;
 }
 
 - (NSData *)dataValue
 {
-    return [RTKANS1Object dataFromData:self.objectData];
+    return [RTKASN1Object dataFromData:self.objectData];
 }
 
 - (id)objectWithData:(NSData *)someData
@@ -109,7 +109,7 @@
     long length = 0;
     int type = 0, xclass = 0;
     
-    RTKANS1Object *object = nil;
+    RTKASN1Object *object = nil;
     
     int result = ASN1_get_object((const unsigned char **)&startOfData, &length, &type, &xclass, (long)someData.length);
     
@@ -122,15 +122,15 @@
         switch(type)
         {
             case V_ASN1_SET:
-                object = [[RTKANS1Set alloc] initWithType:type tag:xclass data:rawData];
+                object = [[RTKASN1Set alloc] initWithType:type tag:xclass data:rawData];
                 break;
           
             case V_ASN1_SEQUENCE:
-                object = [[RTKANS1Sequence alloc] initWithType:type tag:xclass data:rawData];
+                object = [[RTKASN1Sequence alloc] initWithType:type tag:xclass data:rawData];
                 break;
                 
             default:
-                object = [[RTKANS1Object alloc] initWithType:type tag:xclass data:rawData];
+                object = [[RTKASN1Object alloc] initWithType:type tag:xclass data:rawData];
                 break;
         }
         
@@ -146,7 +146,7 @@
          */
         
         NSData *rawData = [NSData dataWithBytesNoCopy:(void *)someData.bytes length:someData.length freeWhenDone:NO];
-        object = [[RTKANS1Object alloc] initWithType:V_ASN1_UNDEF tag:xclass data:rawData];
+        object = [[RTKASN1Object alloc] initWithType:V_ASN1_UNDEF tag:xclass data:rawData];
         
         object.objectSize = someData.length;
     }

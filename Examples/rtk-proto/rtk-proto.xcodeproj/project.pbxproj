@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E847340B1914617000E20D15 /* RTKANS1Object.m in Sources */ = {isa = PBXBuildFile; fileRef = E847340A1914617000E20D15 /* RTKANS1Object.m */; };
-		E847340E1914619400E20D15 /* RTKANS1Set.m in Sources */ = {isa = PBXBuildFile; fileRef = E847340D1914619400E20D15 /* RTKANS1Set.m */; };
-		E8473411191461B100E20D15 /* RTKANS1Sequence.m in Sources */ = {isa = PBXBuildFile; fileRef = E8473410191461B100E20D15 /* RTKANS1Sequence.m */; };
 		E847E7C61913B19700AF8CB8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E847E7C51913B19700AF8CB8 /* Foundation.framework */; };
 		E847E7C81913B19700AF8CB8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E847E7C71913B19700AF8CB8 /* CoreGraphics.framework */; };
 		E847E7CA1913B19700AF8CB8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E847E7C91913B19700AF8CB8 /* UIKit.framework */; };
@@ -26,11 +23,9 @@
 		E847E7F11913B19700AF8CB8 /* rtk_protoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E847E7F01913B19700AF8CB8 /* rtk_protoTests.m */; };
 		E847E7FC1913B49800AF8CB8 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E847E7FA1913B49800AF8CB8 /* libcrypto.a */; };
 		E847E7FD1913B49800AF8CB8 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E847E7FB1913B49800AF8CB8 /* libssl.a */; };
-		E8659F681913B6AE00179773 /* RTKASN1Info.m in Sources */ = {isa = PBXBuildFile; fileRef = E8659F671913B6AE00179773 /* RTKASN1Info.m */; };
 		E8659F6B1913DBFC00179773 /* receipt01 in Resources */ = {isa = PBXBuildFile; fileRef = E8659F6A1913DBFC00179773 /* receipt01 */; };
-		E8659F6E1913DF0F00179773 /* NSData+Crypto.m in Sources */ = {isa = PBXBuildFile; fileRef = E8659F6D1913DF0F00179773 /* NSData+Crypto.m */; };
 		E8659F701913DFD100179773 /* apple-cert in Resources */ = {isa = PBXBuildFile; fileRef = E8659F6F1913DFD100179773 /* apple-cert */; };
-		E872451E191941DE004AC8A3 /* RTKANS1ObjectContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = E872451D191941DE004AC8A3 /* RTKANS1ObjectContainer.m */; };
+		E872453219195D64004AC8A3 /* libreceiptkit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E872453119195D64004AC8A3 /* libreceiptkit.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,12 +39,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		E84734091914617000E20D15 /* RTKANS1Object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RTKANS1Object.h; path = asn1/RTKANS1Object.h; sourceTree = "<group>"; };
-		E847340A1914617000E20D15 /* RTKANS1Object.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RTKANS1Object.m; path = asn1/RTKANS1Object.m; sourceTree = "<group>"; };
-		E847340C1914619400E20D15 /* RTKANS1Set.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RTKANS1Set.h; path = asn1/RTKANS1Set.h; sourceTree = "<group>"; };
-		E847340D1914619400E20D15 /* RTKANS1Set.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RTKANS1Set.m; path = asn1/RTKANS1Set.m; sourceTree = "<group>"; };
-		E847340F191461B100E20D15 /* RTKANS1Sequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RTKANS1Sequence.h; path = asn1/RTKANS1Sequence.h; sourceTree = "<group>"; };
-		E8473410191461B100E20D15 /* RTKANS1Sequence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RTKANS1Sequence.m; path = asn1/RTKANS1Sequence.m; sourceTree = "<group>"; };
 		E847E7C21913B19700AF8CB8 /* rtk-proto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "rtk-proto.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E847E7C51913B19700AF8CB8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E847E7C71913B19700AF8CB8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -71,14 +60,9 @@
 		E847E7F01913B19700AF8CB8 /* rtk_protoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = rtk_protoTests.m; sourceTree = "<group>"; };
 		E847E7FA1913B49800AF8CB8 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = lib/libcrypto.a; sourceTree = "<group>"; };
 		E847E7FB1913B49800AF8CB8 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = lib/libssl.a; sourceTree = "<group>"; };
-		E8659F661913B6AE00179773 /* RTKASN1Info.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTKASN1Info.h; sourceTree = "<group>"; };
-		E8659F671913B6AE00179773 /* RTKASN1Info.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTKASN1Info.m; sourceTree = "<group>"; };
 		E8659F6A1913DBFC00179773 /* receipt01 */ = {isa = PBXFileReference; lastKnownFileType = file; path = receipt01; sourceTree = "<group>"; };
-		E8659F6C1913DF0F00179773 /* NSData+Crypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Crypto.h"; sourceTree = "<group>"; };
-		E8659F6D1913DF0F00179773 /* NSData+Crypto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Crypto.m"; sourceTree = "<group>"; };
 		E8659F6F1913DFD100179773 /* apple-cert */ = {isa = PBXFileReference; lastKnownFileType = file; path = "apple-cert"; sourceTree = "<group>"; };
-		E872451C191941DE004AC8A3 /* RTKANS1ObjectContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RTKANS1ObjectContainer.h; path = asn1/RTKANS1ObjectContainer.h; sourceTree = "<group>"; };
-		E872451D191941DE004AC8A3 /* RTKANS1ObjectContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RTKANS1ObjectContainer.m; path = asn1/RTKANS1ObjectContainer.m; sourceTree = "<group>"; };
+		E872453119195D64004AC8A3 /* libreceiptkit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libreceiptkit.a; path = "../../../../../Library/Developer/Xcode/DerivedData/ReceiptKit-fxteljkoypmrgsbewpouvrqbpkkj/Build/Products/Debug-iphoneos/libreceiptkit.a"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E872453219195D64004AC8A3 /* libreceiptkit.a in Frameworks */,
 				E847E7FD1913B49800AF8CB8 /* libssl.a in Frameworks */,
 				E847E7C81913B19700AF8CB8 /* CoreGraphics.framework in Frameworks */,
 				E847E7CA1913B19700AF8CB8 /* UIKit.framework in Frameworks */,
@@ -107,25 +92,9 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		E84734081914613200E20D15 /* ASN1 */ = {
-			isa = PBXGroup;
-			children = (
-				E84734091914617000E20D15 /* RTKANS1Object.h */,
-				E847340A1914617000E20D15 /* RTKANS1Object.m */,
-				E872451C191941DE004AC8A3 /* RTKANS1ObjectContainer.h */,
-				E872451D191941DE004AC8A3 /* RTKANS1ObjectContainer.m */,
-				E847340C1914619400E20D15 /* RTKANS1Set.h */,
-				E847340D1914619400E20D15 /* RTKANS1Set.m */,
-				E847340F191461B100E20D15 /* RTKANS1Sequence.h */,
-				E8473410191461B100E20D15 /* RTKANS1Sequence.m */,
-			);
-			name = ASN1;
-			sourceTree = "<group>";
-		};
 		E847E7B91913B19700AF8CB8 = {
 			isa = PBXGroup;
 			children = (
-				E84734081914613200E20D15 /* ASN1 */,
 				E847E7CB1913B19700AF8CB8 /* rtk-proto */,
 				E847E7EA1913B19700AF8CB8 /* rtk-protoTests */,
 				E8659F691913DBFC00179773 /* receipt-data */,
@@ -146,6 +115,7 @@
 		E847E7C41913B19700AF8CB8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E872453119195D64004AC8A3 /* libreceiptkit.a */,
 				E847E7FA1913B49800AF8CB8 /* libcrypto.a */,
 				E847E7FB1913B49800AF8CB8 /* libssl.a */,
 				E847E7C51913B19700AF8CB8 /* Foundation.framework */,
@@ -166,10 +136,6 @@
 				E847E7DB1913B19700AF8CB8 /* RTKViewController.m */,
 				E847E7DD1913B19700AF8CB8 /* Images.xcassets */,
 				E847E7CC1913B19700AF8CB8 /* Supporting Files */,
-				E8659F661913B6AE00179773 /* RTKASN1Info.h */,
-				E8659F671913B6AE00179773 /* RTKASN1Info.m */,
-				E8659F6C1913DF0F00179773 /* NSData+Crypto.h */,
-				E8659F6D1913DF0F00179773 /* NSData+Crypto.m */,
 			);
 			path = "rtk-proto";
 			sourceTree = "<group>";
@@ -313,15 +279,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E8659F681913B6AE00179773 /* RTKASN1Info.m in Sources */,
-				E8473411191461B100E20D15 /* RTKANS1Sequence.m in Sources */,
-				E872451E191941DE004AC8A3 /* RTKANS1ObjectContainer.m in Sources */,
-				E847340E1914619400E20D15 /* RTKANS1Set.m in Sources */,
 				E847E7D61913B19700AF8CB8 /* RTKAppDelegate.m in Sources */,
 				E847E7D21913B19700AF8CB8 /* main.m in Sources */,
-				E847340B1914617000E20D15 /* RTKANS1Object.m in Sources */,
 				E847E7DC1913B19700AF8CB8 /* RTKViewController.m in Sources */,
-				E8659F6E1913DF0F00179773 /* NSData+Crypto.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -450,15 +410,18 @@
 				GCC_PREFIX_HEADER = "rtk-proto/rtk-proto-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(PROJECT_DIR)/open-ssl/include\"",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"\"$(PROJECT_DIR)/../../src\"",
+					"\"$(PROJECT_DIR)/../../open-ssl/include\"",
 				);
 				INFOPLIST_FILE = "rtk-proto/rtk-proto-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(PROJECT_DIR)/lib\"",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "B70744EF-63C3-4A1C-9D8D-126FB807E030";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -472,14 +435,16 @@
 				GCC_PREFIX_HEADER = "rtk-proto/rtk-proto-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(PROJECT_DIR)/open-ssl/include\"",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"\"$(PROJECT_DIR)/../../src\"",
+					"\"$(PROJECT_DIR)/../../open-ssl/include\"",
 				);
 				INFOPLIST_FILE = "rtk-proto/rtk-proto-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(PROJECT_DIR)/lib\"",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

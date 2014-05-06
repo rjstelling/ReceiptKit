@@ -1,13 +1,13 @@
 //
 //  RTKASN1Sequence.h
-//  rtk-proto
+//  ReceiptKit
 //
 //  Created by Richard Stelling on 03/05/2014.
 //  Copyright (c) 2014 Richard Stelling. All rights reserved.
 //
 
-#import "RTKANS1ObjectContainer.h"
+#import "RTKASN1ObjectContainer.h"
 
-@interface RTKANS1Sequence : RTKANS1ObjectContainer
+@interface RTKASN1Sequence : RTKASN1ObjectContainer
 
 @end

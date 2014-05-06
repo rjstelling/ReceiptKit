@@ -9,29 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "RTKInAppPurchaseInformation.h"
 
-// ASN.1 values for the App Store receipt
-typedef NS_ENUM(NSInteger, RTKReceiptID)
-{
-    RTKBundleID = 2,
-    RTKVersion = 3,
-    RTKOpaqueValue = 4,
-    RTKHash = 5,
-    RTKInAppPurchase = 17,
-    RTKOriginalVersion = 19,
-    RTKExpiryDate = 21, //Volume Purchase Program
-    
-    //In App
-    RTKQuantity = 1701,
-    RTKProductIdentifier = 1702,
-    RTKTransactionIdentifier = 1703,
-    RTKPurchaseDate = 1704,
-    RTKOriginalTransactionIdentifier =1705,
-    RTKOriginalPurchaseDate = 1706,
-    RTKSubscriptionExpiryDate = 1708,
-    RTKWebOrderLineItemID = 1711,
-    RTKCancellationDate = 1712,
-};
-
 @class RTKASN1Object;
 
 @interface RTKPurchaseInformation : NSObject

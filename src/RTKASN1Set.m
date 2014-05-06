@@ -1,15 +1,15 @@
 //
 //  RTKASN1Set.m
-//  rtk-proto
+//  ReceiptKit
 //
 //  Created by Richard Stelling on 03/05/2014.
 //  Copyright (c) 2014 Richard Stelling. All rights reserved.
 //
 
-#import "RTKANS1Set.h"
-#import "RTKANS1Sequence.h"
+#import "RTKASN1Set.h"
+#import "RTKASN1Sequence.h"
 
-@implementation RTKANS1Set
+@implementation RTKASN1Set
 
 #pragma mark - Life Cycle
 
@@ -43,9 +43,9 @@
 {
     NSString *desc = @"";
     
-    desc = [NSString stringWithFormat:@"<RTK SET : %p> count: %ld", self, [self count]];
+    desc = [NSString stringWithFormat:@"<RTK SET : %p> count: %ld", self, (unsigned long)[self count]];
     
-    for (RTKANS1Object *obj in _internal)
+    for (RTKASN1Object *obj in _internal)
     {
         desc = [desc stringByAppendingFormat:@"\t\n%@", [obj description]];
     }

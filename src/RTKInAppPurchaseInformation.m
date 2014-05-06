@@ -8,9 +8,9 @@
 
 #import "RTKInAppPurchaseInformation.h"
 #import "RTKPurchaseInformation.h"
+#import "RTKAttribute.h"
 #import "RTKASN1Set.h"
 #import "RTKASN1Sequence.h"
-#import "RTKASN1OctetString.h"
 #import "NSDate+Receipt.h"
 
 @implementation RTKInAppPurchaseInformation
@@ -52,44 +52,44 @@
 {
     for(RTKASN1Sequence *iapSeq in iapSetObject)
     {
-        NSInteger iapTypeID = [iapSeq[0] integerValue];
+        RTKAttribute *attribute = [[RTKAttribute alloc] initWithSequence:iapSeq];
 
-        switch(iapTypeID)
+        switch([attribute attributeType])
         {
             case RTKQuantity:
-                _quantity = [NSNumber numberWithInteger:[((RTKASN1OctetString *)iapSeq[2]).data integerValue]];
+                _quantity = [attribute attributeValue];
                 break;
                 
             case RTKProductIdentifier:
-                _productIdentifier = ((RTKASN1OctetString *)iapSeq[2]).data;
+                _productIdentifier = [attribute attributeValue];
                 break;
                 
             case RTKPurchaseDate:
-                _purchaseDate = [NSDate dateFromReceiptDateString:((RTKASN1OctetString *)iapSeq[2]).data];
+                _purchaseDate = [attribute attributeValue];
                 break;
                 
             case RTKTransactionIdentifier:
-                _transactionIdentifier = ((RTKASN1OctetString *)iapSeq[2]).data;
+                _transactionIdentifier = [attribute attributeValue];
                 break;
                 
             case RTKOriginalTransactionIdentifier:
-                _originalTransactionIdentifier = ((RTKASN1OctetString *)iapSeq[2]).data;
+                _originalTransactionIdentifier = [attribute attributeValue];
                 break;
                 
             case RTKOriginalPurchaseDate:
-                _originalPurchaseDate = [NSDate dateFromReceiptDateString:((RTKASN1OctetString *)iapSeq[2]).data];
+                _originalPurchaseDate = [attribute attributeValue];
                 break;
                 
             case RTKCancellationDate:
-                _cancellationDate = [NSDate dateFromReceiptDateString:((RTKASN1OctetString *)iapSeq[2]).data];
+                _cancellationDate = [attribute attributeValue];
                 break;
                 
             case RTKSubscriptionExpiryDate:
-                _subscriptionExpiryDate = [NSDate dateFromReceiptDateString:((RTKASN1OctetString *)iapSeq[2]).data];
+                _subscriptionExpiryDate = [attribute attributeValue];
                 break;
                 
             case RTKWebOrderLineItemID:
-                _webOrderLineItemID = ((RTKASN1OctetString *)iapSeq[2]).data;
+                _webOrderLineItemID = [attribute attributeValue];
                 break;
                 
             default:

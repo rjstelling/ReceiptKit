@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 Empirical Magic Ltd. All rights reserved.
 //
 
+@import UIKit;
+
 #import "RTKReceiptParser.h"
 #import "NSData+Crypto.h"
 
@@ -15,7 +17,6 @@
 #import "RTKASN1Object.h"
 #import "RTKASN1Set.h"
 #import "RTKASN1Sequence.h"
-#import "RTKASN1OctetString.h"
 
 @implementation RTKReceiptParser
 {
@@ -92,7 +93,7 @@
     {
         //This object will most likly be a RTKASN1Set and contain all
         //of the other decoded objects
-        decodedPayload = [RTKASN1Object decodeASN1Data:payload];
+        decodedPayload = [[RTKASN1Object alloc] initWithData:payload];
     }
     else
     {
@@ -142,7 +143,7 @@
         [bundleIDData appendBytes:[bundleIdentifier UTF8String] length:bundleIdentifier.length];
         
         [data appendBytes:uuidBytes length:sizeof(uuid_t)];
-        //#error opaque value is array not data
+        
         [data appendBytes:self.purchaseInfo.opaqueValue.bytes length:self.purchaseInfo.opaqueValue.length];
         [data appendData:bundleIDData];
         
