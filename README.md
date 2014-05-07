@@ -3,6 +3,8 @@ ReceiptKit
 
 Simple StoreKit receipt validation and processing for iOS 7. This only supports the universal receipt format.
 
+Follow the [ReceiptKit Twitter account](http://twitter.com/receiptkit) for code updates and news.
+
 ##Receipt Data
 
 Under iOS 7 receipt data can be accessed like this:
