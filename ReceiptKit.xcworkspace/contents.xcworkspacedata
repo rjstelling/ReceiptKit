@@ -2,12 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:receiptkitapp/receiptkitapp.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:ReceiptKit.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Examples/rtk-proto/rtk-proto.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:receiptkitapp/receiptkitapp.xcodeproj">
    </FileRef>
 </Workspace>
