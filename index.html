@@ -98,23 +98,23 @@ The properties of this object can be used to query the receipt and any in-app pu
 
 <p>While developing your app any IAP will be performed with in the <code>[Sandbox]</code>. Conection to the sandbox is handled automaticly when you app it complied with a development provisioning profile. </p>
 
-<p><img src="/docs/itunes-dash.png" alt="iTunes Connect Dashboard"></p>
+<p><img src="images/itunes-dash.png" alt="iTunes Connect Dashboard"></p>
 
 <p>Log into iThues Connect and click on the "Manage Users" link.</p>
 
-<p><img src="/docs/itunes-test-user.png" alt="Manage User - iTunes Connect"></p>
+<p><img src="images/itunes-test-user.png" alt="Manage User - iTunes Connect"></p>
 
 <p>Click on the "Test User" button.</p>
 
-<p><img src="/docs/itunes-add-user.png" alt="Test Users"></p>
+<p><img src="images/itunes-add-user.png" alt="Test Users"></p>
 
 <p>Click on the "Add User" button in the top right.</p>
 
-<p><img src="/docs/add-new-user.png" alt="Add New User"></p>
+<p><img src="images/add-new-user.png" alt="Add New User"></p>
 
 <p>Fill in the "Add New User" form, the password requirements are the same as for the production store.</p>
 
-<p><img src="/docs/log-out-on-device.png" alt="Log Out, On Device"></p>
+<p><img src="images/log-out-on-device.png" alt="Log Out, On Device"></p>
 
 <p>On the device you will be testing with you <em>must</em> log out of the App Store. This can be done in <code>Setting.app &gt; iTunes &amp; App Store</code>, tap the <code>Apple ID</code> and then <code>Sign Out</code>.</p>
 
@@ -123,13 +123,13 @@ The properties of this object can be used to query the receipt and any in-app pu
 <h3>
 <a name="create-in-app-purchase" class="anchor" href="#create-in-app-purchase"><span class="octicon octicon-link"></span></a>Create In App Purchase</h3>
 
-<p><img src="/docs/ReceiptKit.png" alt="ReceiptKit App"></p>
+<p><img src="images/ReceiptKit.png" alt="ReceiptKit App"></p>
 
 <p>Either create an app for testing ReceiptKit or from with in the app you intend to incorporate ReceiptKit into, click the "Manage In App Purchases" button.</p>
 
-<p><img src="/docs/create-new.png" alt="Create New IAP"></p>
+<p><img src="images/create-new.png" alt="Create New IAP"></p>
 
-<p><img src="/docs/iap.png" alt="In App Purchases"></p>
+<p><img src="images/iap.png" alt="In App Purchases"></p>
 
 <p>If you want to use ReceiptKit demo app then you need to create 2 IAP called <code>consumable01</code> and <code>nonconsumable01</code>. You can give these any display name, cost and description as you like but "Product IDs" neewd to be; <code>consumable01</code> and <code>nonconsumable01</code>.</p>
 
@@ -143,13 +143,13 @@ The properties of this object can be used to query the receipt and any in-app pu
 <li>Run the app on the test device</li>
 <li>If you have set up the IAP correctly the display names, cost and description will be loaded into the app</li>
 <li>Tapping a button next to an IAP will prompt you to sign in:
--- <img src="/docs/sign-in.png" alt="Sign in">
+-- <img src="images/sign-in.png" alt="Sign in">
 </li>
 <li>Tap "Use Existing Apple ID" and enter the email and password of the test user set up above
--- <img src="/docs/apple-id.png" alt="Apple ID">
+-- <img src="images/apple-id.png" alt="Apple ID">
 </li>
 <li>If all is working the App will ask you to confirm the purchase (in Sandbox mode)
--- <img src="/docs/confirm-purchase.png" alt="Confirm IAP">
+-- <img src="images/confirm-purchase.png" alt="Confirm IAP">
 </li>
 <li>If no errors occur you can tap "Check Receipt" to validate the receipt (you can only do this once per session unless you compile your own version of OpenSSL).</li>
 <li>Tap "View Receipt" to see some info about the receipt.</li>
