@@ -1,3 +1,6 @@
 [submodule "InterAppCommunication"]
 	path = InterAppCommunication
 	url = https://github.com/tapsandswipes/InterAppCommunication
+[submodule "software-licence-agreement"]
+	path = software-licence-agreement
+	url = https://github.com/empiricalmagic/software-licence-agreement.git
