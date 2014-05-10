@@ -12,6 +12,8 @@
 
 + (NSDate *)dateFromReceiptDateString:(NSString *)dateStr
 {
+    NSParameterAssert(dateStr);
+    
     if(dateStr.length == 0)
         return nil;
     
