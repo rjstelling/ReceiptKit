@@ -1,21 +1,30 @@
 //
-//  NSDate+Receipt.m
+//  NSDate+ReceiptKit.m
 //  ReceiptKit
 //
 //  Created by Richard Stelling on 01/10/2013.
 //  Copyright (c) 2013 Empirical Magic Ltd. All rights reserved.
 //
 
-#import "NSDate+Receipt.h"
+#import "NSDate+ReceiptKit.h"
 
-@implementation NSDate (Receipt)
+@implementation NSDate (ReceiptKit)
 
 + (NSDate *)dateFromReceiptDateString:(NSString *)dateStr
 {
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    if(dateStr.length == 0)
+        return nil;
     
-    [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
+    static NSDateFormatter *formatter = nil;
     
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
+        NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:@"UTC"];
+        [formatter setTimeZone:timeZone];
+    });
+
     return [formatter dateFromString:dateStr];
 }
 
