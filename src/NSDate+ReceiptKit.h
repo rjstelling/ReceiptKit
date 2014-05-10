@@ -1,5 +1,5 @@
 //
-//  NSDate+Receipt.h
+//  NSDate+ReceiptKit
 //  ReceiptKit
 //
 //  Created by Richard Stelling on 01/10/2013.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSDate (Receipt)
+@interface NSDate (ReceiptKit)
 
 + (NSDate *)dateFromReceiptDateString:(NSString *)dateStr;
 

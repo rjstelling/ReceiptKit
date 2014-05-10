@@ -9,7 +9,7 @@
 #import "RTKAttribute.h"
 #import "RTKASN1Set.h"
 #import "RTKASN1Sequence.h"
-#import "NSDate+Receipt.h"
+#import "NSDate+ReceiptKit.h"
 
 #pragma mark - RTKASN1Sequence Category
 

@@ -10,7 +10,7 @@
 #import "RTKASN1Set.h"
 #import "RTKASN1Sequence.h"
 #import "RTKAttribute.h"
-#import "NSDate+Receipt.h"
+#import "NSDate+ReceiptKit.h"
 
 #import <objc/runtime.h>
 
