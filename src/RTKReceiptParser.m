@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Empirical Magic Ltd. All rights reserved.
 //
 
-@import UIKit;
+@import StoreKit;
 
 #import "RTKReceiptParser.h"
 #import "NSData+Crypto.h"
@@ -18,6 +18,12 @@
 #import "RTKASN1Set.h"
 #import "RTKASN1Sequence.h"
 
+static __strong RTKReceiptParser *_asyncObjectPlaceholder = nil;
+
+@interface RTKReceiptParser () <SKProductsRequestDelegate>
+
+@end
+
 @implementation RTKReceiptParser
 {
     RTKASN1Object *_internalDecodedPayloadCache;
@@ -27,6 +33,9 @@
     //Cached receipt and cert. data
     NSData *_receiptData;
     NSData *_certificateData;
+    
+    RTKParserCompletionBlock _cachedCompletionBlock;
+    NSURL *_cachedCertificateFile;
 }
 
 #pragma mark - Properties
@@ -42,10 +51,35 @@
     return _purchaseInfo;
 }
 
-#pragma mark - Life Style
+#pragma mark - Life Cycle
 
-- (instancetype)initWithReceipt:(NSData *)receiptData certificate:(NSData *)certificateData
+- (instancetype)initWithReceipt:(NSData *)receiptData certificate:(NSData *)certificateData //DEPRICATED
 {
+    return [self initWithReceiptData:receiptData certificateData:certificateData];
+}
+
+- (instancetype)initWithCertificateURL:(NSURL *)certificateFile completion:(RTKParserCompletionBlock)completionBlock
+{
+    NSParameterAssert(certificateFile);
+    
+    if(self = [super init])
+    {
+        _cachedCompletionBlock = completionBlock;
+        _cachedCertificateFile = certificateFile;
+        
+        SKReceiptRefreshRequest *refesh = [[SKReceiptRefreshRequest alloc] initWithReceiptProperties:nil];
+        refesh.delegate = self;
+        [refesh start];
+    }
+    
+    return self;
+}
+
+- (instancetype)initWithReceiptData:(NSData *)receiptData certificateData:(NSData *)certificateData
+{
+    NSParameterAssert(receiptData);
+    NSParameterAssert(certificateData);
+    
     if(self = [super init])
     {
         _receiptData = [receiptData copy];
@@ -54,6 +88,87 @@
     
     return self;
 }
+
+- (instancetype)initWithReceiptURL:(NSURL *)receiptFile certificateURL:(NSURL *)certificateFile
+{
+    NSParameterAssert(receiptFile);
+    NSParameterAssert(certificateFile);
+    
+    NSData *certData = [NSData dataWithContentsOfURL:certificateFile];
+    NSData *receiptData = [NSData dataWithContentsOfURL:receiptFile];
+    
+    NSAssert(certData.length > 0, @"Cannot read certificate file");
+    NSAssert(receiptData.length > 0, @"Cannot read receipt file");
+    
+    return [self initWithReceiptData:receiptData certificateData:certData];
+}
+
+- (instancetype)initWithCertificateURL:(NSURL *)certificateFile
+{
+    NSURL *receiptFile = [[NSBundle mainBundle] appStoreReceiptURL];
+    
+    return [self initWithReceiptURL:receiptFile certificateURL:certificateFile];
+}
+
+#pragma mark - Async Cals
+
++ (void)receiptParserWithCertificateURL:(NSURL *)certificateFile completion:(RTKParserCompletionBlock)completionBlock
+{
+    NSURL *receiptFile = [[NSBundle mainBundle] appStoreReceiptURL];
+    NSData *receiptData = [NSData dataWithContentsOfURL:receiptFile];
+    
+    NSData *certData = [NSData dataWithContentsOfURL:certificateFile];
+    NSAssert(certData.length > 0, @"Cannot read certificate file");
+    
+    if(receiptData && certData)
+    {
+        RTKReceiptParser *me = [[RTKReceiptParser alloc] initWithReceiptData:receiptData certificateData:certData];
+        
+        if(completionBlock)
+            completionBlock(me, nil);
+    }
+    else if(certData)
+    {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+            _asyncObjectPlaceholder = [[RTKReceiptParser alloc] initWithCertificateURL:certificateFile completion:completionBlock];
+        });
+    }
+    else
+    {
+        if(completionBlock)
+            completionBlock(nil, nil); //TODO: return error
+    }
+}
+
+- (void)requestDidFinish:(SKRequest *)request
+{
+    if([request isKindOfClass:[SKReceiptRefreshRequest class]])
+    {
+        NSLog(@"Successful Receipt Refresh Request...");
+        
+        RTKParserCompletionBlock completionBlock = [_cachedCompletionBlock copy];
+        NSURL *certificateFile = [_cachedCertificateFile copy];
+        NSURL *receiptFile = [[NSBundle mainBundle] appStoreReceiptURL];
+        
+        completionBlock([[RTKReceiptParser alloc] initWithReceiptURL:receiptFile certificateURL:certificateFile], nil);
+        
+        _asyncObjectPlaceholder = nil;
+    }
+}
+
+- (void)request:(SKRequest *)request didFailWithError:(NSError *)error
+{
+    NSLog(@"%@", error);
+    
+    //[request cancel];
+    
+    if(_cachedCompletionBlock)
+        _cachedCompletionBlock(nil, nil); //TODO: return error
+    
+    _asyncObjectPlaceholder = nil;
+}
+
+- (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)respons {}
 
 #pragma mark - Public
 
