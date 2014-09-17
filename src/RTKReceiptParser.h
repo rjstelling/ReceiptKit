@@ -8,13 +8,21 @@
 
 #import <Foundation/Foundation.h>
 
-@class RTKPurchaseInformation;
+@class RTKPurchaseInformation, RTKReceiptParser;
+
+typedef void(^RTKParserCompletionBlock)(RTKReceiptParser *parser, NSError *error);
 
 @interface RTKReceiptParser : NSObject
 
 @property (readonly, nonatomic) RTKPurchaseInformation *purchaseInfo;
 
-- (instancetype)initWithReceipt:(NSData *)receiptData certificate:(NSData *)certificateData;
+- (instancetype)initWithReceipt:(NSData *)receiptData certificate:(NSData *)certificateData __attribute__((availability(ios,deprecated=1.0,message="Use -initWithReceiptData:certificateData: instead")));
+- (instancetype)initWithReceiptData:(NSData *)receiptData certificateData:(NSData *)certificateData;
+- (instancetype)initWithReceiptURL:(NSURL *)receiptFile certificateURL:(NSURL *)certificateFile; //Uses -dataWithContentsOfURL: and calls -initWithReceiptData:certificateData:
+- (instancetype)initWithCertificateURL:(NSURL *)certificateFile; //Uses -appStoreReceiptURL can calls -initWithReceiptURL:certificateURL:
+
+//Block based asynchronous calls
++ (void)receiptParserWithCertificateURL:(NSURL *)certificateFile completion:(RTKParserCompletionBlock)completionBlock;
 
 /// Do not read the values of `bundleIdentifier` or `bundleVersion` directly
 /// from the Info.plist, as it is too eay to alter. Instead, hard code the
