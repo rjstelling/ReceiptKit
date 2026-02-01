@@ -110,3 +110,7 @@ If you want to use ReceiptKit demo app then you need to create 2 IAP called `con
 ### Got-Yas
 
 1. If you create a consumable IAP this wil be removed form the receipt if you refresh the receipt. 
+
+---
+
+[Contact](https://agent-mailbox.richardstelling.com/#contact)
